@@ -183,7 +183,8 @@
     "linkFailed": "The file could not be opened.",
     "linkConfirm": "Open this file with its default application?",
     "linkOpen": "Open",
-    "aiPrivateHttp": "This connection is not encrypted. Use it only on a network you trust."
+    "aiPrivateHttp": "This connection is not encrypted. Use it only on a network you trust.",
+    "homeTab": "ElixirOffice start page"
   },
   "fr": {
     "privacy": "Les documents restent sur cet ordinateur",
@@ -368,7 +369,8 @@
     "linkFailed": "Impossible d'ouvrir le fichier.",
     "linkConfirm": "Ouvrir ce fichier avec son application par défaut ?",
     "linkOpen": "Ouvrir",
-    "aiPrivateHttp": "Cette connexion n’est pas chiffrée. Ne l’utilisez que sur un réseau de confiance."
+    "aiPrivateHttp": "Cette connexion n’est pas chiffrée. Ne l’utilisez que sur un réseau de confiance.",
+    "homeTab": "Page d'accueil ElixirOffice"
   },
   "de": {
     "privacy": "Dokumente bleiben auf diesem Computer",
@@ -549,7 +551,8 @@
     "linkFailed": "Die Datei konnte nicht geöffnet werden.",
     "linkConfirm": "Diese Datei mit der Standardanwendung öffnen?",
     "linkOpen": "Öffnen",
-    "aiPrivateHttp": "Diese Verbindung ist nicht verschlüsselt. Verwenden Sie sie nur in einem vertrauenswürdigen Netzwerk."
+    "aiPrivateHttp": "Diese Verbindung ist nicht verschlüsselt. Verwenden Sie sie nur in einem vertrauenswürdigen Netzwerk.",
+    "homeTab": "ElixirOffice-Startseite"
   },
   "es": {
     "privacy": "Los documentos permanecen en este equipo",
@@ -730,7 +733,8 @@
     "linkFailed": "No se pudo abrir el archivo.",
     "linkConfirm": "¿Abrir este archivo con su aplicación predeterminada?",
     "linkOpen": "Abrir",
-    "aiPrivateHttp": "Esta conexión no está cifrada. Úsela solo en una red de confianza."
+    "aiPrivateHttp": "Esta conexión no está cifrada. Úsela solo en una red de confianza.",
+    "homeTab": "Página de inicio de ElixirOffice"
   },
   "it": {
     "privacy": "I documenti restano su questo computer",
@@ -911,7 +915,8 @@
     "linkFailed": "Impossibile aprire il file.",
     "linkConfirm": "Aprire questo file con l'applicazione predefinita?",
     "linkOpen": "Apri",
-    "aiPrivateHttp": "Questa connessione non è cifrata. Usala solo su una rete di cui ti fidi."
+    "aiPrivateHttp": "Questa connessione non è cifrata. Usala solo su una rete di cui ti fidi.",
+    "homeTab": "Pagina iniziale di ElixirOffice"
   },
   "pt": {
     "privacy": "Os documentos ficam neste computador",
@@ -1092,7 +1097,8 @@
     "linkFailed": "Não foi possível abrir o arquivo.",
     "linkConfirm": "Abrir este arquivo com o aplicativo padrão?",
     "linkOpen": "Abrir",
-    "aiPrivateHttp": "Esta ligação não está cifrada. Utilize-a apenas numa rede de confiança."
+    "aiPrivateHttp": "Esta ligação não está cifrada. Utilize-a apenas numa rede de confiança.",
+    "homeTab": "Página inicial do ElixirOffice"
   },
   "pt-pt": {
     "privacy": "Os documentos ficam neste computador",
@@ -1273,7 +1279,8 @@
     "linkFailed": "Não foi possível abrir o ficheiro.",
     "linkConfirm": "Abrir este ficheiro com a aplicação predefinida?",
     "linkOpen": "Abrir",
-    "aiPrivateHttp": "Esta ligação não está cifrada. Utilize-a apenas numa rede de confiança."
+    "aiPrivateHttp": "Esta ligação não está cifrada. Utilize-a apenas numa rede de confiança.",
+    "homeTab": "Página inicial do ElixirOffice"
   },
   "nl": {
     "privacy": "Documenten blijven op deze computer",
@@ -1454,7 +1461,8 @@
     "linkFailed": "Het bestand kan niet worden geopend.",
     "linkConfirm": "Dit bestand openen met de standaardtoepassing?",
     "linkOpen": "Openen",
-    "aiPrivateHttp": "Deze verbinding is niet versleuteld. Gebruik haar alleen op een netwerk dat u vertrouwt."
+    "aiPrivateHttp": "Deze verbinding is niet versleuteld. Gebruik haar alleen op een netwerk dat u vertrouwt.",
+    "homeTab": "ElixirOffice-startpagina"
   },
   "pl": {
     "privacy": "Dokumenty pozostają na tym komputerze",
@@ -1635,7 +1643,8 @@
     "linkFailed": "Nie można otworzyć pliku.",
     "linkConfirm": "Otworzyć ten plik w aplikacji domyślnej?",
     "linkOpen": "Otwórz",
-    "aiPrivateHttp": "To połączenie nie jest szyfrowane. Używaj go tylko w zaufanej sieci."
+    "aiPrivateHttp": "To połączenie nie jest szyfrowane. Używaj go tylko w zaufanej sieci.",
+    "homeTab": "Strona główna ElixirOffice"
   },
   "ru": {
     "privacy": "Документы остаются на этом компьютере",
@@ -1816,7 +1825,8 @@
     "linkFailed": "Не удалось открыть файл.",
     "linkConfirm": "Открыть этот файл в приложении по умолчанию?",
     "linkOpen": "Открыть",
-    "aiPrivateHttp": "Это соединение не зашифровано. Используйте его только в сети, которой вы доверяете."
+    "aiPrivateHttp": "Это соединение не зашифровано. Используйте его только в сети, которой вы доверяете.",
+    "homeTab": "Стартовая страница ElixirOffice"
   },
   "ja": {
     "privacy": "文書はこのコンピューターに保存されます",
@@ -1997,7 +2007,8 @@
     "linkFailed": "ファイルを開けませんでした。",
     "linkConfirm": "このファイルを既定のアプリで開きますか?",
     "linkOpen": "開く",
-    "aiPrivateHttp": "この接続は暗号化されていません。信頼できるネットワークでのみ使用してください。"
+    "aiPrivateHttp": "この接続は暗号化されていません。信頼できるネットワークでのみ使用してください。",
+    "homeTab": "ElixirOffice スタート ページ"
   },
   "zh": {
     "privacy": "文档保留在此计算机上",
@@ -2178,7 +2189,8 @@
     "linkFailed": "无法打开该文件。",
     "linkConfirm": "要使用默认应用程序打开此文件吗?",
     "linkOpen": "打开",
-    "aiPrivateHttp": "此连接未加密。请仅在您信任的网络中使用。"
+    "aiPrivateHttp": "此连接未加密。请仅在您信任的网络中使用。",
+    "homeTab": "ElixirOffice 起始页"
   },
   "zh-tw": {
     "privacy": "文件保留在此電腦上",
@@ -2362,7 +2374,8 @@
     "linkFailed": "無法開啟檔案。",
     "linkConfirm": "要使用預設應用程式開啟此檔案嗎?",
     "linkOpen": "開啟",
-    "aiPrivateHttp": "此連線未加密。請僅在您信任的網路中使用。"
+    "aiPrivateHttp": "此連線未加密。請僅在您信任的網路中使用。",
+    "homeTab": "ElixirOffice 起始頁"
   },
   "ar": {
     "privacy": "تبقى المستندات على هذا الكمبيوتر",
@@ -2546,7 +2559,8 @@
     "linkFailed": "تعذر فتح الملف.",
     "linkConfirm": "هل تريد فتح هذا الملف باستخدام التطبيق الافتراضي؟",
     "linkOpen": "فتح",
-    "aiPrivateHttp": "هذا الاتصال غير مشفّر. استخدمه فقط على شبكة تثق بها."
+    "aiPrivateHttp": "هذا الاتصال غير مشفّر. استخدمه فقط على شبكة تثق بها.",
+    "homeTab": "ElixirOffice start page"
   },
   "az": {
     "privacy": "Sənədlər bu kompüterdə qalır",
@@ -2730,7 +2744,8 @@
     "linkFailed": "Fayl açıla bilmədi.",
     "linkConfirm": "Bu fayl defolt tətbiqlə açılsın?",
     "linkOpen": "Aç",
-    "aiPrivateHttp": "Bu bağlantı şifrələnməyib. Ondan yalnız etibar etdiyiniz şəbəkədə istifadə edin."
+    "aiPrivateHttp": "Bu bağlantı şifrələnməyib. Ondan yalnız etibar etdiyiniz şəbəkədə istifadə edin.",
+    "homeTab": "ElixirOffice baş səhifəsi"
   },
   "be": {
     "privacy": "Дакументы застаюцца на гэтым камп’ютары",
@@ -2914,7 +2929,8 @@
     "linkFailed": "Не ўдалося адкрыць файл.",
     "linkConfirm": "Адкрыць гэты файл у праграме па змаўчанні?",
     "linkOpen": "Адкрыць",
-    "aiPrivateHttp": "Гэта злучэнне не зашыфравана. Выкарыстоўвайце яго толькі ў сетцы, якой вы давяраеце."
+    "aiPrivateHttp": "Гэта злучэнне не зашыфравана. Выкарыстоўвайце яго толькі ў сетцы, якой вы давяраеце.",
+    "homeTab": "Стартавая старонка ElixirOffice"
   },
   "bg": {
     "privacy": "Документите остават на този компютър",
@@ -3101,7 +3117,8 @@
     "linkFailed": "Файлът не можа да бъде отворен.",
     "linkConfirm": "Да се отвори ли този файл с приложението по подразбиране?",
     "linkOpen": "Отвори",
-    "aiPrivateHttp": "Тази връзка не е криптирана. Използвайте я само в мрежа, на която имате доверие."
+    "aiPrivateHttp": "Тази връзка не е криптирана. Използвайте я само в мрежа, на която имате доверие.",
+    "homeTab": "Начална страница на ElixirOffice"
   },
   "ca": {
     "privacy": "Els documents romanen en aquest ordinador",
@@ -3285,7 +3302,8 @@
     "linkFailed": "No s'ha pogut obrir el fitxer.",
     "linkConfirm": "Voleu obrir aquest fitxer amb l'aplicació predeterminada?",
     "linkOpen": "Obre",
-    "aiPrivateHttp": "Aquesta connexió no està xifrada. Feu-la servir només en una xarxa de confiança."
+    "aiPrivateHttp": "Aquesta connexió no està xifrada. Feu-la servir només en una xarxa de confiança.",
+    "homeTab": "Pàgina d'inici d'ElixirOffice"
   },
   "cs": {
     "privacy": "Dokumenty zůstávají v tomto počítači",
@@ -3469,7 +3487,8 @@
     "linkFailed": "Soubor se nepodařilo otevřít.",
     "linkConfirm": "Otevřít tento soubor ve výchozí aplikaci?",
     "linkOpen": "Otevřít",
-    "aiPrivateHttp": "Toto spojení není šifrované. Používejte ho pouze v síti, které důvěřujete."
+    "aiPrivateHttp": "Toto spojení není šifrované. Používejte ho pouze v síti, které důvěřujete.",
+    "homeTab": "Úvodní stránka ElixirOffice"
   },
   "da": {
     "privacy": "Dokumenter bliver på denne computer",
@@ -3653,7 +3672,8 @@
     "linkFailed": "Filen kunne ikke åbnes.",
     "linkConfirm": "Vil du åbne denne fil med standardprogrammet?",
     "linkOpen": "Åbn",
-    "aiPrivateHttp": "Denne forbindelse er ikke krypteret. Brug den kun på et netværk, du stoler på."
+    "aiPrivateHttp": "Denne forbindelse er ikke krypteret. Brug den kun på et netværk, du stoler på.",
+    "homeTab": "ElixirOffice-startside"
   },
   "el": {
     "privacy": "Τα έγγραφα παραμένουν σε αυτόν τον υπολογιστή",
@@ -3837,7 +3857,8 @@
     "linkFailed": "Δεν ήταν δυνατό το άνοιγμα του αρχείου.",
     "linkConfirm": "Να ανοίξει αυτό το αρχείο με την προεπιλεγμένη εφαρμογή;",
     "linkOpen": "Άνοιγμα",
-    "aiPrivateHttp": "Αυτή η σύνδεση δεν είναι κρυπτογραφημένη. Χρησιμοποιήστε την μόνο σε δίκτυο που εμπιστεύεστε."
+    "aiPrivateHttp": "Αυτή η σύνδεση δεν είναι κρυπτογραφημένη. Χρησιμοποιήστε την μόνο σε δίκτυο που εμπιστεύεστε.",
+    "homeTab": "Αρχική σελίδα ElixirOffice"
   },
   "eu": {
     "privacy": "Dokumentuak ordenagailu honetan geratzen dira",
@@ -4021,7 +4042,8 @@
     "linkFailed": "Ezin izan da fitxategia ireki.",
     "linkConfirm": "Fitxategi hau aplikazio lehenetsiarekin ireki nahi duzu?",
     "linkOpen": "Ireki",
-    "aiPrivateHttp": "Konexio hau ez dago zifratuta. Erabili soilik fidagarria den sare batean."
+    "aiPrivateHttp": "Konexio hau ez dago zifratuta. Erabili soilik fidagarria den sare batean.",
+    "homeTab": "ElixirOffice hasierako orria"
   },
   "fi": {
     "privacy": "Asiakirjat pysyvät tällä tietokoneella",
@@ -4207,7 +4229,8 @@
     "linkFailed": "Tiedostoa ei voitu avata.",
     "linkConfirm": "Avataanko tämä tiedosto oletussovelluksella?",
     "linkOpen": "Avaa",
-    "aiPrivateHttp": "Tämä yhteys ei ole salattu. Käytä sitä vain verkossa, johon luotat."
+    "aiPrivateHttp": "Tämä yhteys ei ole salattu. Käytä sitä vain verkossa, johon luotat.",
+    "homeTab": "ElixirOfficen aloitussivu"
   },
   "gl": {
     "privacy": "Os documentos quedan neste ordenador",
@@ -4391,7 +4414,8 @@
     "linkFailed": "Non se puido abrir o ficheiro.",
     "linkConfirm": "Abrir este ficheiro coa aplicación predeterminada?",
     "linkOpen": "Abrir",
-    "aiPrivateHttp": "Esta conexión non está cifrada. Úsaa só nunha rede de confianza."
+    "aiPrivateHttp": "Esta conexión non está cifrada. Úsaa só nunha rede de confianza.",
+    "homeTab": "Páxina de inicio de ElixirOffice"
   },
   "he": {
     "privacy": "המסמכים נשארים במחשב זה",
@@ -4575,7 +4599,8 @@
     "linkFailed": "לא ניתן היה לפתוח את הקובץ.",
     "linkConfirm": "לפתוח את הקובץ הזה באמצעות יישום ברירת המחדל?",
     "linkOpen": "פתיחה",
-    "aiPrivateHttp": "חיבור זה אינו מוצפן. השתמשו בו רק ברשת שאתם סומכים עליה."
+    "aiPrivateHttp": "חיבור זה אינו מוצפן. השתמשו בו רק ברשת שאתם סומכים עליה.",
+    "homeTab": "דף ההתחלה של ElixirOffice"
   },
   "hu": {
     "privacy": "A dokumentumok ezen a számítógépen maradnak",
@@ -4759,7 +4784,8 @@
     "linkFailed": "A fájlt nem sikerült megnyitni.",
     "linkConfirm": "Megnyitja ezt a fájlt az alapértelmezett alkalmazással?",
     "linkOpen": "Megnyitás",
-    "aiPrivateHttp": "Ez a kapcsolat nem titkosított. Csak megbízható hálózaton használja."
+    "aiPrivateHttp": "Ez a kapcsolat nem titkosított. Csak megbízható hálózaton használja.",
+    "homeTab": "ElixirOffice kezdőlap"
   },
   "hy": {
     "privacy": "Փաստաթղթերը մնում են այս համակարգչում",
@@ -4943,7 +4969,8 @@
     "linkFailed": "Չհաջողվեց բացել ֆայլը։",
     "linkConfirm": "Բացե՞լ այս ֆայլը լռելյայն հավելվածով։",
     "linkOpen": "Բացել",
-    "aiPrivateHttp": "Այս կապը գաղտնագրված չէ։ Օգտագործեք այն միայն վստահելի ցանցում։"
+    "aiPrivateHttp": "Այս կապը գաղտնագրված չէ։ Օգտագործեք այն միայն վստահելի ցանցում։",
+    "homeTab": "ElixirOffice partidas էջ"
   },
   "id": {
     "privacy": "Dokumen tetap berada di komputer ini",
@@ -5127,7 +5154,8 @@
     "linkFailed": "File tidak dapat dibuka.",
     "linkConfirm": "Buka file ini dengan aplikasi default?",
     "linkOpen": "Buka",
-    "aiPrivateHttp": "Koneksi ini tidak terenkripsi. Gunakan hanya di jaringan yang Anda percayai."
+    "aiPrivateHttp": "Koneksi ini tidak terenkripsi. Gunakan hanya di jaringan yang Anda percayai.",
+    "homeTab": "Halaman awal ElixirOffice"
   },
   "ko": {
     "privacy": "문서는 이 컴퓨터에 보관됩니다",
@@ -5311,7 +5339,8 @@
     "linkFailed": "파일을 열 수 없습니다.",
     "linkConfirm": "기본 응용 프로그램으로 이 파일을 여시겠습니까?",
     "linkOpen": "열기",
-    "aiPrivateHttp": "이 연결은 암호화되어 있지 않습니다. 신뢰할 수 있는 네트워크에서만 사용하세요."
+    "aiPrivateHttp": "이 연결은 암호화되어 있지 않습니다. 신뢰할 수 있는 네트워크에서만 사용하세요.",
+    "homeTab": "ElixirOffice 시작 페이지"
   },
   "lo": {
     "privacy": "ເອກະສານຢູ່ໃນຄອມພິວເຕີນີ້",
@@ -5495,7 +5524,8 @@
     "linkFailed": "ບໍ່ສາມາດເປີດໄຟລ໌ໄດ້.",
     "linkConfirm": "ເປີດໄຟລ໌ນີ້ດ້ວຍແອັບພລິເຄຊັນເລີ່ມຕົ້ນບໍ?",
     "linkOpen": "ເປີດ",
-    "aiPrivateHttp": "ການເຊື່ອມຕໍ່ນີ້ບໍ່ໄດ້ເຂົ້າລະຫັດ. ໃຊ້ສະເພາະໃນເຄືອຂ່າຍທີ່ທ່ານເຊື່ອຖືເທົ່ານັ້ນ."
+    "aiPrivateHttp": "ການເຊື່ອມຕໍ່ນີ້ບໍ່ໄດ້ເຂົ້າລະຫັດ. ໃຊ້ສະເພາະໃນເຄືອຂ່າຍທີ່ທ່ານເຊື່ອຖືເທົ່ານັ້ນ.",
+    "homeTab": "ຫນ้าເລີ່ມต้น ElixirOffice"
   },
   "lv": {
     "privacy": "Dokumenti paliek šajā datorā",
@@ -5679,7 +5709,8 @@
     "linkFailed": "Failu neizdevās atvērt.",
     "linkConfirm": "Vai atvērt šo failu ar noklusējuma lietojumprogrammu?",
     "linkOpen": "Atvērt",
-    "aiPrivateHttp": "Šis savienojums nav šifrēts. Izmantojiet to tikai tīklā, kuram uzticaties."
+    "aiPrivateHttp": "Šis savienojums nav šifrēts. Izmantojiet to tikai tīklā, kuram uzticaties.",
+    "homeTab": "ElixirOffice sākumlapa"
   },
   "ms": {
     "privacy": "Dokumen kekal pada komputer ini",
@@ -5863,7 +5894,8 @@
     "linkFailed": "Fail tidak dapat dibuka.",
     "linkConfirm": "Buka fail ini dengan aplikasi lalai?",
     "linkOpen": "Buka",
-    "aiPrivateHttp": "Sambungan ini tidak disulitkan. Gunakannya hanya pada rangkaian yang anda percayai."
+    "aiPrivateHttp": "Sambungan ini tidak disulitkan. Gunakannya hanya pada rangkaian yang anda percayai.",
+    "homeTab": "Halaman utama ElixirOffice"
   },
   "no": {
     "privacy": "Dokumenter blir på denne datamaskinen",
@@ -6058,7 +6090,8 @@
     "linkFailed": "Filen kunne ikke åpnes.",
     "linkConfirm": "Vil du åpne denne filen med standardprogrammet?",
     "linkOpen": "Åpne",
-    "aiPrivateHttp": "Denne tilkoblingen er ikke kryptert. Bruk den bare på et nettverk du stoler på."
+    "aiPrivateHttp": "Denne tilkoblingen er ikke kryptert. Bruk den bare på et nettverk du stoler på.",
+    "homeTab": "ElixirOffice-startside"
   },
   "ro": {
     "privacy": "Documentele rămân pe acest computer",
@@ -6242,7 +6275,8 @@
     "linkFailed": "Fișierul nu a putut fi deschis.",
     "linkConfirm": "Deschideți acest fișier cu aplicația implicită?",
     "linkOpen": "Deschide",
-    "aiPrivateHttp": "Această conexiune nu este criptată. Folosiți-o doar într-o rețea de încredere."
+    "aiPrivateHttp": "Această conexiune nu este criptată. Folosiți-o doar într-o rețea de încredere.",
+    "homeTab": "Pagina de start ElixirOffice"
   },
   "si": {
     "privacy": "ලේඛන මෙම පරිගණකයේ රැඳේ",
@@ -6426,7 +6460,8 @@
     "linkFailed": "ගොනුව විවෘත කළ නොහැකි විය.",
     "linkConfirm": "මෙම ගොනුව පෙරනිමි යෙදුම සමඟ විවෘත කරන්නද?",
     "linkOpen": "විවෘත කරන්න",
-    "aiPrivateHttp": "මෙම සම්බන්ධතාව සංකේතනය කර නැත. ඔබ විශ්වාස කරන ජාලයක පමණක් භාවිතා කරන්න."
+    "aiPrivateHttp": "මෙම සම්බන්ධතාව සංකේතනය කර නැත. ඔබ විශ්වාස කරන ජාලයක පමණක් භාවිතා කරන්න.",
+    "homeTab": "ElixirOffice start page"
   },
   "sk": {
     "privacy": "Dokumenty zostávajú v tomto počítači",
@@ -6610,7 +6645,8 @@
     "linkFailed": "Súbor sa nepodarilo otvoriť.",
     "linkConfirm": "Otvoriť tento súbor v predvolenej aplikácii?",
     "linkOpen": "Otvoriť",
-    "aiPrivateHttp": "Toto pripojenie nie je šifrované. Používajte ho iba v sieti, ktorej dôverujete."
+    "aiPrivateHttp": "Toto pripojenie nie je šifrované. Používajte ho iba v sieti, ktorej dôverujete.",
+    "homeTab": "Úvodná stránka ElixirOffice"
   },
   "sl": {
     "privacy": "Dokumenti ostanejo v tem računalniku",
@@ -6798,7 +6834,8 @@
     "linkFailed": "Datoteke ni bilo mogoče odpreti.",
     "linkConfirm": "Ali želite to datoteko odpreti s privzetim programom?",
     "linkOpen": "Odpri",
-    "aiPrivateHttp": "Ta povezava ni šifrirana. Uporabljajte jo samo v omrežju, ki mu zaupate."
+    "aiPrivateHttp": "Ta povezava ni šifrirana. Uporabljajte jo samo v omrežju, ki mu zaupate.",
+    "homeTab": "Začetna stran ElixirOffice"
   },
   "sq": {
     "privacy": "Dokumentet mbeten në këtë kompjuter",
@@ -6982,7 +7019,8 @@
     "linkFailed": "Skedari nuk mund të hapej.",
     "linkConfirm": "Ta hapni këtë skedar me aplikacionin e parazgjedhur?",
     "linkOpen": "Hap",
-    "aiPrivateHttp": "Ky lidhje nuk është e enkriptuar. Përdoreni vetëm në një rrjet që besoni."
+    "aiPrivateHttp": "Ky lidhje nuk është e enkriptuar. Përdoreni vetëm në një rrjet që besoni.",
+    "homeTab": "Faqja kryesore e ElixirOffice"
   },
   "sr": {
     "privacy": "Dokumenti ostaju na ovom računaru",
@@ -7166,7 +7204,8 @@
     "linkFailed": "Datoteku nije moguće otvoriti.",
     "linkConfirm": "Otvoriti ovu datoteku podrazumevanom aplikacijom?",
     "linkOpen": "Otvori",
-    "aiPrivateHttp": "Ova veza nije šifrovana. Koristite je samo na mreži kojoj verujete."
+    "aiPrivateHttp": "Ova veza nije šifrovana. Koristite je samo na mreži kojoj verujete.",
+    "homeTab": "Početna stranica ElixirOffice"
   },
   "sr-cyrl": {
     "privacy": "Документи остају на овом рачунару",
@@ -7350,7 +7389,8 @@
     "linkFailed": "Датотеку није могуће отворити.",
     "linkConfirm": "Отворити ову датотеку подразумеваном апликацијом?",
     "linkOpen": "Отвори",
-    "aiPrivateHttp": "Ова веза није шифрована. Користите је само на мрежи којој верујете."
+    "aiPrivateHttp": "Ова веза није шифрована. Користите је само на мрежи којој верујете.",
+    "homeTab": "Почетна страница ElixirOffice"
   },
   "sv": {
     "privacy": "Dokument stannar på den här datorn",
@@ -7534,7 +7574,8 @@
     "linkFailed": "Det gick inte att öppna filen.",
     "linkConfirm": "Vill du öppna den här filen med standardprogrammet?",
     "linkOpen": "Öppna",
-    "aiPrivateHttp": "Den här anslutningen är inte krypterad. Använd den bara i ett nätverk du litar på."
+    "aiPrivateHttp": "Den här anslutningen är inte krypterad. Använd den bara i ett nätverk du litar på.",
+    "homeTab": "ElixirOffice startsida"
   },
   "tr": {
     "privacy": "Belgeler bu bilgisayarda kalır",
@@ -7718,7 +7759,8 @@
     "linkFailed": "Dosya açılamadı.",
     "linkConfirm": "Bu dosya varsayılan uygulamayla açılsın mı?",
     "linkOpen": "Aç",
-    "aiPrivateHttp": "Bu bağlantı şifrelenmemiştir. Yalnızca güvendiğiniz bir ağda kullanın."
+    "aiPrivateHttp": "Bu bağlantı şifrelenmemiştir. Yalnızca güvendiğiniz bir ağda kullanın.",
+    "homeTab": "ElixirOffice başlangıç sayfası"
   },
   "uk": {
     "privacy": "Документи залишаються на цьому комп’ютері",
@@ -7902,7 +7944,8 @@
     "linkFailed": "Не вдалося відкрити файл.",
     "linkConfirm": "Відкрити цей файл у програмі за замовчуванням?",
     "linkOpen": "Відкрити",
-    "aiPrivateHttp": "Це з’єднання не зашифроване. Використовуйте його лише в мережі, якій ви довіряєте."
+    "aiPrivateHttp": "Це з’єднання не зашифроване. Використовуйте його лише в мережі, якій ви довіряєте.",
+    "homeTab": "Стартова сторінка ElixirOffice"
   },
   "ur": {
     "privacy": "دستاویزات اس کمپیوٹر پر رہتی ہیں",
@@ -8086,7 +8129,8 @@
     "linkFailed": "فائل کھولی نہیں جا سکی۔",
     "linkConfirm": "کیا اس فائل کو ڈیفالٹ ایپلیکیشن سے کھولنا ہے؟",
     "linkOpen": "کھولیں",
-    "aiPrivateHttp": "یہ کنکشن خفیہ نہیں ہے۔ اسے صرف ایسے نیٹ ورک پر استعمال کریں جس پر آپ بھروسا کرتے ہیں۔"
+    "aiPrivateHttp": "یہ کنکشن خفیہ نہیں ہے۔ اسے صرف ایسے نیٹ ورک پر استعمال کریں جس پر آپ بھروسا کرتے ہیں۔",
+    "homeTab": "ElixirOffice ہوم پیج"
   },
   "vi": {
     "privacy": "Tài liệu ở lại trên máy tính này",
@@ -8275,6 +8319,7 @@
     "linkFailed": "Không thể mở tệp.",
     "linkConfirm": "Mở tệp này bằng ứng dụng mặc định?",
     "linkOpen": "Mở",
-    "aiPrivateHttp": "Kết nối này không được mã hóa. Chỉ sử dụng trên mạng mà bạn tin cậy."
+    "aiPrivateHttp": "Kết nối này không được mã hóa. Chỉ sử dụng trên mạng mà bạn tin cậy.",
+    "homeTab": "Trang bắt đầu ElixirOffice"
   }
 }

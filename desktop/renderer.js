@@ -33,7 +33,7 @@ async function returnHome(){
   compactChrome?.dispose();compactChrome=null;pdfCompatibility?.dispose();pdfCompatibility=null;controller?.dispose();controller=null;feedback?.dispose();feedback=null;lastOperation=null;lastRecovery=null;editor?.destroyEditor();editor=null;file=null;frame=null;main=null;window.EOLocalSession=null;$('workspace').hidden=true;$('home').hidden=false;status('');await refreshHome();
  }catch(error){fail(error)}
 }
-function desktopAction(action,value){if(choosingSaveAs)return;return ({open:()=>run(()=>eoDesktop.choose()),new:()=>run(()=>eoDesktop.create(value)),template:()=>run(()=>eoDesktop.template(value)),recent:()=>run(()=>eoDesktop.recent(value)),'recent-remove':()=>eoDesktop.removeRecent(value).then(()=>refreshHome()).catch(fail),'recents-clear':()=>eoDesktop.clearRecents().then(()=>refreshHome()).catch(fail),save:()=>save(),'save-as':()=>save(true),export:()=>exportCopy(),rename:()=>rename(),pdf:()=>openPrint(false),print:()=>openPrint(true),'pdf-now':()=>pdf(false,undefined,value),'print-now':()=>pdf(true,undefined,value),help:()=>eoDesktop.help(),about:()=>eoDesktop.about(),quit:()=>eoDesktop.quit(),settings:()=>showOptions(),fonts:()=>fontConsent(),'move-menu':()=>eoDesktop.moveMenu().catch(fail),close:()=>info?.capture?returnHome():eoDesktop.closeTab().catch(fail),home:()=>returnHome(),cancel:()=>abort?.abort()}[action]||(()=>{}))();}
+function desktopAction(action,value){if(choosingSaveAs)return;return ({open:()=>run(()=>eoDesktop.choose()),new:()=>run(()=>eoDesktop.create(value)),template:()=>run(()=>eoDesktop.template(value)),recent:()=>run(()=>eoDesktop.recent(value)),'recent-remove':()=>eoDesktop.removeRecent(value).then(()=>refreshHome()).catch(fail),'recents-clear':()=>eoDesktop.clearRecents().then(()=>refreshHome()).catch(fail),save:()=>save(),'save-as':()=>save(true),export:()=>exportCopy(),rename:()=>rename(value),pdf:()=>openPrint(false),print:()=>openPrint(true),'pdf-now':()=>pdf(false,undefined,value),'print-now':()=>pdf(true,undefined,value),help:()=>eoDesktop.help(),about:()=>eoDesktop.about(),quit:()=>eoDesktop.quit(),settings:()=>showOptions(),fonts:()=>fontConsent(),'move-menu':()=>eoDesktop.moveMenu().catch(fail),close:()=>info?.capture?returnHome():eoDesktop.closeTab().catch(fail),home:()=>returnHome(),cancel:()=>abort?.abort()}[action]||(()=>{}))();}
 
 const fail=(error,saveError=false)=>{if(EODesktopErrors.cancelled(error)){window.EOLocalFailure=null;status('');return}const reason=EODesktopErrors.message(error,info?.strings);window.EOLocalFailure=reason;status(reason);if(!saveError)return;
  const copy=document.createElement('button');copy.type='button';copy.textContent=info?.strings.opCopyDiagnostics||'Copy diagnostics';copy.addEventListener('click',()=>eoDesktop.copySaveDiagnostics().catch(()=>{}));$('message').append(' ',copy);};
@@ -206,7 +206,8 @@ async function open(selected) {
     await new Promise((resolve,reject)=>{
       editor=new DocsAPI.DocEditor('editor',{documentType:kind,type:'desktop',width:'100%',height:'100%',
         editorConfig:{mode:'edit',lang:info.language,user:{id:'local',name:authorName},customization:{elixirLocal:true,autosave:false,forcesave:false,plugins:false,macros:false,features:{featuresTips:false}},coEditing:{mode:'strict',change:false}},
-        events:{onAppReady:async()=>{
+        // #94: api.js derives canRename from onRequestRename; the title bar renames through desktopAction instead.
+        events:{...(!info.capture&&!file.temporary?{onRequestRename:()=>{}}:{}),onAppReady:async()=>{
           if(controller)return;
           try {
             timings.appReady=performance.now();openPerformance('renderer-ready',timings.appReady-timings.selected);openingOperation.phase('initializing');frame=document.querySelector('#workspace iframe').contentWindow;
@@ -315,8 +316,19 @@ async function save(as=false){
 function setDocumentName(name){
  main.api.documentTitle=name;main.api.DocInfo?.put_Title(name);const doc=main.document||main.appOptions.spreadsheet;if(doc)doc.title=name;main.onDocumentName(name);backstage?.setName();
 }
-async function rename(){
+async function rename(baseName){
  if(!controller||operationBusy)return;
+ if(baseName!==undefined){
+  const name=String(baseName).trim();
+  if(!name)return;
+  window.EOLocalFailure=null;buttons(true);
+  try{
+   const renamed=await eoDesktop.rename(file.token,name);Object.assign(file,renamed);
+   setDocumentName(renamed.name);window.EOLastRename=renamed;await recoveryCopy();
+  }catch(error){fail(error)}
+  finally{buttons(false)}
+  return;
+ }
  window.EOLocalFailure=null;
  const label=backstage?.renameLabel||'Rename',box=modal(label),form=document.createElement('form'),fieldLabel=document.createElement('label'),input=document.createElement('input'),notice=document.createElement('p'),actions=document.createElement('div');
  box.className+=' desktop-rename';actions.className='desktop-dialog-actions';fieldLabel.textContent=label;fieldLabel.htmlFor='desktop-rename-name';

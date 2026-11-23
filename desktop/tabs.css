@@ -16,7 +16,8 @@ button:focus-visible{outline:2px solid Highlight;outline-offset:-2px}
 
 #tab-bar[hidden]{display:none}
 
-#home-tab{flex:none;padding:0 12px}#home-tab[hidden]{display:none}
+#home-tab{flex:none;padding:0 12px;display:flex;align-items:center;justify-content:center}#home-tab[hidden]{display:none}
+#home-tab .home-icon{width:17px;height:17px;flex:none} /* #95: ElixirOffice mark instead of the word Home */
 
 .document-icon{width:16px;height:16px;flex:none;fill:currentColor}.document-icon.t-word{color:var(--eo-module-word)}.document-icon.t-cell{color:var(--eo-module-cell)}.document-icon.t-slide{color:var(--eo-module-slide)}.document-icon.t-pdf{color:var(--eo-module-pdf)}
 .document-dirty{font-size:8px;line-height:1;flex:none}

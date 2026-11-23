@@ -16,6 +16,8 @@ window.EODesktopBackstage=async function(win,main,info,action){
  const chrome=app.getController('ElixirChrome'),bs=chrome?.backstage;
  if(!bs)throw Error('Bundled backstage unavailable');
  const fm=bs.fm,$=win.$,t=key=>info.strings[key],parent=window;
+ // #94: expose the existing desktop action bridge to the title bar.
+ chrome.titleBar&&(chrome.titleBar.desktopAction=action);
  // Desktop AutoRecover is configured in Options; the inherited server AutoSave switch is not applicable.
  chrome.titleBar?.$autosave?.remove();
  const original=bs.afterApplyMode;

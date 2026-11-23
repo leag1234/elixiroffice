@@ -93,7 +93,7 @@
  window.eoTabs.onState(state=>{if(!initialized){if(!pendingState||state.revision>=pendingState.revision)pendingState=state;return;}render(state);});
  window.eoTabs.initial().then(value=>{
   strings=value.strings;document.documentElement.lang=value.language;document.dir=value.direction;
-  if(home){home.textContent=strings.home||'Home';home.setAttribute('aria-label',strings.home||'Home');}
+  if(home){const homeTab=strings.homeTab||'ElixirOffice start page';home.title=homeTab;home.setAttribute('aria-label',homeTab);} // #95: icon-only tab, like Microsoft Office
   dismiss.setAttribute('aria-label',strings.close||'Close');
   move.title=strings.tabMove;move.setAttribute('aria-label',strings.tabMove);
   list.setAttribute('aria-label',strings.tabsLabel);add.title=strings.tabNew;add.setAttribute('aria-label',strings.tabNew);initialized=true;render(pendingState&&pendingState.revision>value.state.revision?pendingState:value.state);

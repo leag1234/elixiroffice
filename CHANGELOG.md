@@ -1,5 +1,24 @@
 # Changelog
 
+## Desktop 0.9.4 — published 2026-11-23
+
+- Fix: Ask Elixir answers to questions about the document (no change made) can now be selected with the mouse and have a Copy button before Close (#68).
+- Fix: a long Ask Elixir answer no longer pushes the pop-up past the bottom of the window: the answer scrolls inside the pop-up, and the input field and the buttons stay reachable (#68).
+- Fix: in the desktop app, clicking the file name in the title bar and typing a new name now renames the file; before, the field was disabled and the keystrokes went into the document (#94).
+- Changed: the start page tab of the tab bar shows the ElixirOffice mark with a tooltip instead of the word Home, so it is no longer confused with the Home tab of the ribbon (#95).
+- Changed: printing or exporting a spreadsheet now defaults to the active sheet(s), as in Excel, instead of the whole workbook; the print panel opens at once with "Preparing preview…" while the preview is calculated (#92).
+- Fix: Word pictures converted from WMF/EMF drawings: on screen their lines were drawn as 2 px solid black lines; they are now thin hairlines, as in Word (#61).
+- Fix: spreadsheet AutoFilter on large sheets: the search field understands the * and ? wildcards like Excel, waits for a pause in typing instead of rebuilding the list on every character, and the list shows at most 10,000 values with a "Not all items showing" notice; on a 110,000-row sheet the list now opens in about 3 s instead of 24 s (#99). When the list is capped and every search result stays selected, OK now filters all rows of the column (a "contains" filter built from the search text), not only the first 10,000 values (#99).
+- Fix: the account menu of the title bar: after reopening it, the arrow keys no longer skip entries (#100).
+- Fix: Ask Elixir in Word: Accept and Discard of an AI edit now process only the assistant's own tracked changes, never earlier changes made by other people (#100).
+- Fix (server): the start page shows every pending save warning (conflict copy, failed save) one after the other instead of only the first (#100).
+- Fix (server): Nextcloud: when Document Server retries a final save whose first attempt already succeeded, no false conflict copy is created any more (#100).
+- Fix: Linux (X11): after maximizing or restoring the window, the document area kept the previous window size (cut off or stretched); it now follows the window (#96).
+- Fix: in dark interface themes, the Word Styles gallery previews are dark instead of white rectangles, in the ribbon and in the open gallery (#93).
+- Fix: Ask Elixir in Word: with the cursor simply placed in a bulleted or numbered item (no selection), a request such as "Summarize this document" read only that item; it now reads the whole document, as for any other plain cursor.
+- Fix: Word running heads: a STYLEREF field in a header or footer (for example the current chapter title at the top of each page) now shows the heading of that page, as in Word, instead of an error text.
+- Fix: a Word document with a landscape page between portrait pages, each section with its own header and footer, saved as .odt: the page styles are now given to the first paragraph of each section, so the pages no longer run together and each page keeps its size, orientation, header and footer (a three page test document had become one page; a landscape diagram moved to the next page).
+
 ## Desktop 0.9.3 — published 2026-11-19
 
 - Changed: files now have their own document icons per family (text documents, spreadsheets, presentations, PDF, Markdown), in each module colour, instead of the ElixirOffice application icon, on macOS and Windows.

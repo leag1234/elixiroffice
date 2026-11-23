@@ -92,8 +92,22 @@ function createTabHost({BrowserWindow,WebContentsView,ipcMain,registry,session,r
   window.webContents.setWindowOpenHandler(()=>({action:'deny'}));
   window.webContents.on('will-navigate',(event,url)=>{if(url!==shellURL)event.preventDefault();});
   const remember=()=>{if(owner.window===window)geometry.changed?.(window);};
-  window.on('resize',()=>{if(owner.window===window){bounds(owner);remember();}});
-  for(const event of ['move','maximize','unmaximize','leave-full-screen'])window.on(event,remember);
+  // #96: on Linux X11 the 'resize' fired by maximize/unmaximize can arrive while
+  // getContentSize() still reports the old size, so re-run the layout on the
+  // state-change events too, plus deferred second passes to catch the final size.
+  const layout=()=>{if(owner.window===window&&!window.isDestroyed()){bounds(owner);remember();}};
+  const deferred=[];
+  const scheduleLayout=()=>{
+   for(const timer of deferred)clearTimeout(timer);deferred.length=0; // coalesce bursts of events (drag resize)
+   for(const delay of [50,250]){
+    const timer=setTimeout(()=>{if(owner.window===window&&!window.isDestroyed())bounds(owner);},delay);
+    timer.unref?.();deferred.push(timer);
+   }
+  };
+  window.on('resize',()=>{layout();scheduleLayout();});
+  for(const event of ['move'])window.on(event,remember);
+  for(const event of ['maximize','unmaximize','enter-full-screen','leave-full-screen','resized'])window.on(event,()=>{layout();scheduleLayout();});
+  window.on('closed',()=>{for(const timer of deferred)clearTimeout(timer);deferred.length=0;});
   window.on('close',event=>{
    if(owner.window!==window){event.preventDefault();return;}
    if(owner.allowClose)return;

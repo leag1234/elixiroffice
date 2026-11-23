@@ -2,7 +2,7 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const source=fs.readFileSync(path.resolve(__dirname,'../../desktop/renderer.js'),'utf8');
-const start=source.indexOf('async function rename(){'),end=source.indexOf('\nasync function ',start+2);
+const start=source.indexOf('async function rename(baseName){'),end=source.indexOf('\nasync function ',start+2);
 assert(start>=0&&end>start);
 function fixture(rename){
  const nodes=[],calls=[],context={controller:{},operationBusy:false,file:{token:'public-token',name:'Public.docx'},window:{},backstage:{renameLabel:'Rename'},t:x=>x};

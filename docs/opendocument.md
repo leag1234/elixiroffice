@@ -93,10 +93,10 @@ Two more losses were fixed afterwards (core branches `eo/odf-comments` and `eo/o
   a next-page section (this keeps the case of bug 76397, a text section is not a page style change); a text section with columns
   is a continuous section with its columns (unequal widths included). When the file is saved again, a continuous section
   with the page size and margins of the previous one no longer gets a page style, and so no extra page, of its own. The
-  documents with a lost column count went from 10 to 7 and with kept sections from 5 to 7. What is still open: when a
-  document has a landscape page between portrait pages, each with its own header and footer, the ODT writer creates the
-  page styles but does not give them to the paragraphs, so the pages run together on the next save (a three page test
-  document became one page).
+  documents with a lost column count went from 10 to 7 and with kept sections from 5 to 7. Since then, a document
+  with a landscape page between portrait pages, each with its own header and footer, also keeps its pages when it is
+  saved as `.odt`: each page style goes to the first paragraph of its section (in the 115-document gate, 4 documents
+  improved, among them a three page test document that had become one page).
 
 ## Known open work
 

@@ -57,6 +57,39 @@ Excel references) before it is integrated.
 
 ## Security check before each release
 
+### 2026-11-23 (release 0.9.4)
+
+- Release with the fixes and changes listed in the changelog since 0.9.3 (DocumentServer pins: sdkjs, web-apps and the
+  server example app; core unchanged, same conversion runtime as 0.9.3).
+- Dependency scan (OSV, nightly) of 2026-11-23: 932 findings, none new since 2026-11-22 and none gone. The shipped high
+  finding (request-filtering-agent 1.0.5 in the server) stays reviewed as not affected. The vendored C/C++ check of
+  2026-11-23 is unchanged (xpdf 4.03, dcraw 8.93, V8 8.9, ICU 74.2, HarfBuzz stay on the plan).
+- Electron 44.11.3 -> 44.11.5 (Chromium 152.0.7977.169 unchanged). 44.11.4 updates the embedded Node.js to 24.22.3 (security
+  release of 2026-11-10) and fixes two small renderer issues; 44.11.5 adds backported fixes from upstream ANGLE, Chromium,
+  Dawn, FFmpeg, PDFium, Skia, V8 and WebRTC, and fixes non-network Web Worker requests bypassing protocol.handle() and
+  webRequest handlers. The release notes list no CVE identifiers. The signed update policy and the QA baseline were
+  re-qualified for 44.11.5 in the same change.
+- npm audit of desktop/package-lock.json: production dependencies 0 findings; the full tree has the same 8 findings as for
+  0.9.3 (1 high, 7 moderate), all in build tools (undici, minimatch, fast-uri, electron-builder and helpers); they run on
+  the build machine only and are not part of the packaged application.
+- New code in this release: see the changelog; no new network access.
+
+### 2026-11-22 (desktop test builds 91 and 92, not published)
+
+- Internal test build of the fixes listed in the changelog since 0.9.3 (DocumentServer pins: sdkjs, web-apps and the
+  server example app; core unchanged, same conversion runtime as 0.9.3).
+- Dependency scan (OSV, nightly) of 2026-11-22: the 15 findings reported as new are the libtiff entries already reviewed
+  for 0.9.3 (copy under openjpeg-2.4.0/thirdparty, not compiled). The shipped high finding (request-filtering-agent 1.0.5
+  in the server) stays reviewed as not affected. The vendored C/C++ check is unchanged.
+- Electron stays at 44.11.3 for this test build; 44.11.4 (embedded Node.js security release) and 44.11.5 stay planned as
+  a separate, qualified change before the next release.
+- New code since 0.9.3, all in the sandboxed renderer unless noted: STYLEREF fields in headers and footers, Ask Elixir
+  accept/discard limited to its own revisions, AutoFilter search and list limit, faster list views, the start page tab
+  mark, spreadsheet print defaults, dark Styles gallery previews, thin WMF/EMF hairlines on screen. In the main process:
+  renaming the open file from the title bar (stays in the same folder, same destination checks as saving) and the view layout after maximize
+  and restore on Linux. Server example app: save notices queue and idempotent retried final saves (Nextcloud connector).
+  No new network access.
+
 ### 2026-11-19 (desktop 0.9.3, published 2026-11-19)
 
 - Release with the fixes and changes listed in the changelog since 0.9.2; the DocumentServer pins carry the editor and
