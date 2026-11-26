@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 'use strict';
-const DAY=24*60*60*1000,TIMEOUT_MS=8000,MAX_BYTES=512*1024;
-const API_URL='https://api.github.com/repos/leag1234/elixiroffice/releases?per_page=20';
+const DAY=24*60*60*1000,TIMEOUT_MS=8000,MAX_BYTES=4*1024*1024;
+// #104: the release list grows by about 30 KB per release; a 512 KiB cap with 20 releases made the check fail silently from 0.9.3 on.
+const API_URL='https://api.github.com/repos/leag1234/elixiroffice/releases?per_page=5';
 const PAGE='https://github.com/leag1234/elixiroffice/releases/tag/';
 function parseVersion(value){
  if(typeof value!=='string'||value.length>128)return null;

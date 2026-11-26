@@ -81,7 +81,8 @@ rendered by Word desktop; only aggregates appear here). Pack: `branding/fonts/` 
 
 | Requested family | Windows + Office | Windows without Office | macOS + Office | macOS without Office | Linux desktop | Web / server |
 |---|---|---|---|---|---|---|
-| Calibri, Calibri Light | Calibri | Calibri (supplied by Windows) | Carlito¹ | Carlito | Carlito | Carlito |
+| Calibri | Calibri | Calibri (supplied by Windows) | Carlito¹ | Carlito | Carlito | Carlito |
+| Calibri Light (headings font of Office 2013-2022) | Calibri Light | Calibri Light (supplied by Windows) | Calibri Light Metric¹ | Calibri Light Metric | Calibri Light Metric (Latin; Carlito for other scripts) | same as Linux |
 | Cambria | Cambria | Cambria | Caladea¹ | Caladea | Caladea | Caladea |
 | Aptos, Aptos Display | Aptos² | Roboto Metric | Roboto Metric¹ | Roboto Metric | Roboto Metric | Roboto Metric |
 | Arial, Times New Roman, Courier New | originals | originals | originals | originals | Liberation | Liberation |
@@ -116,7 +117,7 @@ Roboto Metric.
 
 | Requested family | Documents | Word (web) | Before | After |
 |---|---|---|---|---|
-| Calibri, Calibri Light (theme) | 24 | Calibri | Carlito | Carlito |
+| Calibri, Calibri Light (theme) | 24 | Calibri | Carlito | Carlito (Calibri), Calibri Light Metric (Calibri Light, § 11) |
 | Cambria | t07, t09, s02 | Cambria | Caladea | Caladea |
 | Cambria Math | t01 | Cambria Math | Asana Math | Asana Math |
 | Arial | 14 | Arial | Liberation Sans | Liberation Sans |
@@ -344,3 +345,26 @@ historical evidence limits and open runtime gates. No integration or release.
 ## 2026-10-27 — Pan-CJK offline fallback candidate
 
 Issue 39 adds pinned, unmodified Noto Sans CJK 2.004 Regular and Bold collections to desktop-generated font assets. System regional families keep priority; generated `Elixir Fallback CJK JP/SC/TC/KR` aliases provide deterministic offline coverage when computer-font access is unavailable or declined. Web local mode receives the metadata initially but fetches the two same-origin collection resources only after CJK content needs them, then reuses the normal font cache. The two files add 39,535,544 raw bytes. OFL/notice, source hashes, regional mapping and PDF evidence are documented in [desktop system fonts](desktop-system-fonts.md#pan-cjk-packaged-fallback--04-issue-39-candidate).
+
+## 11. Calibri Light Metric (headings font of Office 2013-2022)
+
+Calibri Light is the "major" (headings) theme font of every default PowerPoint title and Word heading of
+Office 2013-2022. It used to be drawn with Carlito Regular, which is heavier (stems 0.086 em against 0.058 em)
+and 1.2 % wider than Calibri Light on ordinary text (Calibri Light has the same vertical metrics as Calibri
+but narrower advances in 71 of the 95 ASCII characters, up to 6 % for "/" and "Y").
+
+- Family **Calibri Light Metric**, built by `branding/fonts/build.py` (group `metric`) from Lato Light (OFL 1.1,
+  google/fonts commit 7085eb89, sha256 in `sources.json`): Lato is the design Carlito itself is derived from.
+  `fit_advances` scales the outline of each glyph horizontally so that its advance equals the advance of the
+  same character in Calibri Light (the technique Carlito applies to Lato Regular), scales the outlines
+  vertically by 0.915 (cap height 2 % above, x-height 2 % below Calibri Light), and copies the vertical metrics of
+  Calibri Light. Only numbers (558 advance widths and the vertical metrics, `reference-metrics.json`, entry
+  `CalibriLight`) come from the Microsoft font; no font data.
+- Width error against Calibri Light: at most 0.1 % per glyph (integer rounding), 0.01 to 0.03 % on running text
+  (Carlito: +1.2 %). Kerning pairs are not applied (GPOS dropped), like the other metric fonts of the pack.
+- Covers U+0020-024F (Latin, Latin Extended-A/B), spacing modifiers used by Office text, dashes, quotes, bullet,
+  ellipsis, per mille, euro, trademark, minus. Greek and Cyrillic are not covered (Lato 1.x has none): those
+  characters fall back to the next font of the chain, Carlito. Regular only: bold and italic of Calibri Light are
+  synthesised by the engine (Windows does the same, Calibri Light has no bold).
+- Substitution (`FD_Substitutes` in `sdkjs/common/libfont/map.js`): `Calibri Light` -> `Calibri Light Metric`,
+  then `Carlito`. A real Calibri Light installed on the machine still wins.

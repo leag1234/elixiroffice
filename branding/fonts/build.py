@@ -99,7 +99,7 @@ def copy_vmetrics(font, ref):
     os2.fsSelection = (os2.fsSelection & ~0x80) | (ref["fsSel"] & 0x80)
 
 
-def subset_unicodes(font, ranges):
+def subset_unicodes(font, ranges, features=None):
     """Keep only the code points of "keep_unicode" (list of "XXXX-YYYY" hex ranges): the cmap entries and glyphs
     of every other script (e.g. the partial Arabic of Wine Tahoma) are removed, so that the per-character font
     picker never selects the font for them. Layout tables, hinting and names are kept."""
@@ -109,7 +109,7 @@ def subset_unicodes(font, ranges):
         lo, _, hi = r.partition("-")
         keep.update(range(int(lo, 16), int(hi or lo, 16) + 1))
     o = subset.Options()
-    o.layout_features = ["*"]
+    o.layout_features = features if features is not None else ["*"]
     o.hinting = True
     o.notdef_outline = True
     o.glyph_names = True
@@ -185,6 +185,45 @@ def scale_outlines(font, xs, ys):
         if tag in font:
             del font[tag]
     _fix_bounds(font)
+
+
+def fit_advances(font, ref):
+    """Give every glyph the advance width the reference font has for the same code point (ref["adv"]:
+    {"code point": advance in 1/ref["upm"] units}) by scaling its outline horizontally by (target advance /
+    own advance), and scale all outlines vertically by ref["yscale"] (the free design is taller than the
+    Microsoft one at the same em). This is the technique the Carlito design itself uses on Lato, applied to
+    a lighter weight. Glyphs reachable only through layout features (not in the cmap) get the mean factor of
+    the mapped glyphs. Composite glyphs are flattened; GPOS/GDEF (kerning values would need the same per-glyph
+    scaling) and the hinting tables are dropped. Only numbers (advances) come from the reference font."""
+    glyf = font["glyf"]; hmtx = font["hmtx"]
+    k = font["head"].unitsPerEm / ref["upm"]
+    ys = ref.get("yscale", 1.0)
+    cmap = font.getBestCmap()
+    xs = {}
+    for cp, name in cmap.items():
+        target = ref["adv"].get(str(cp))
+        own = hmtx[name][0]
+        if target is not None and own > 0:
+            xs[name] = target * k / own
+    mean = sum(xs.values()) / len(xs)
+    flat = {name: _flatten(glyf, name) for name in font.getGlyphOrder()}  # before any glyph is modified
+    for name, g in flat.items():
+        f = xs.get(name, mean)
+        if g.numberOfContours > 0:
+            g.coordinates.scale((f, ys))
+            g.coordinates.toInt()
+        g.program = _empty_program()
+        glyf.glyphs[name] = g
+        hmtx[name] = (round(hmtx[name][0] * f), 0)
+    for cp, name in cmap.items():  # exact advance for the mapped glyphs (not the rounded product)
+        target = ref["adv"].get(str(cp))
+        if target is not None:
+            hmtx[name] = (round(target * k), 0)
+    for tag in ("GPOS", "GDEF", "hdmx", "LTSH", "VDMX", "cvt ", "fpgm", "prep", "gasp"):
+        if tag in font:
+            del font[tag]
+    _fix_bounds(font)
+    return xs
 
 
 def _fix_bounds(font):
@@ -337,8 +376,10 @@ def main():
             if derive.get("instance"):
                 font = instancer.instantiateVariableFont(font, derive["instance"])
             if derive.get("keep_unicode"):
-                subset_unicodes(font, derive["keep_unicode"])
-            if derive.get("vmetrics") and ("xscale" in refm[derive["vmetrics"]] or "yscale" in refm[derive["vmetrics"]]):
+                subset_unicodes(font, derive["keep_unicode"], derive.get("layout_features"))
+            if derive.get("vmetrics") and "adv" in refm[derive["vmetrics"]]:
+                fit_advances(font, refm[derive["vmetrics"]])
+            elif derive.get("vmetrics") and ("xscale" in refm[derive["vmetrics"]] or "yscale" in refm[derive["vmetrics"]]):
                 r = refm[derive["vmetrics"]]
                 scale_outlines(font, r.get("xscale", 1.0), r.get("yscale", 1.0))
             if derive.get("ruled"):

@@ -75,7 +75,7 @@ Learn more: [PowerPoint shortcuts](shortcuts.md) and [Interface notes](ui.md).
 | Feature | ElixirOffice | LibreOffice | ONLYOFFICE |
 |---|---|---|---|
 | Layout fidelity | Measured against Microsoft Word on a corpus of public documents, and tracked as changes land. | Not measured publicly. | — |
-| Metric-compatible fonts | Substitutes with the metrics of Verdana and Tahoma, the real Noto Sans and Ubuntu families are bundled, so documents in these fonts keep their line breaks and page count without the original fonts. | Carlito and Caladea for Calibri and Cambria; DejaVu for the rest. | Carlito, Caladea and the DejaVu fonts. |
+| Metric-compatible fonts | Substitutes with the metrics of Verdana, Tahoma and Calibri Light (the Office headings font, in its light weight), the real Noto Sans and Ubuntu families are bundled, so documents in these fonts keep their line breaks and page count without the original fonts. | Carlito and Caladea for Calibri and Cambria; DejaVu for the rest. | Carlito, Caladea and the DejaVu fonts. |
 | Fonts of your computer | With your consent, documents are laid out with the fonts installed on your computer (Calibri, Cambria, school fonts); nothing is uploaded. | Desktop app only. | Server fonts only in the web editor. |
 | School fonts | The Marelle fonts and Seyes-ruled school cursive are included, so teachers' documents show the real letterforms. | Not shipped. | Not shipped. |
 | PDF export | The PDF is written on your computer (browser or desktop) with the same fonts as on screen, selectable text and embedded fonts; no upload. | Desktop export with its own layout engine. | The server writes the PDF with its own fonts. |

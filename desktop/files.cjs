@@ -133,7 +133,33 @@ async function atomicWrite(target, bytes, expected,options) {
     if (original) {
       const latest = await run('target-stat',()=>fs.lstat(target));
       if (!latest.isFile() || latest.isSymbolicLink() || latest.ino !== original.inode || (await run('target-fingerprint',()=>fingerprint(target))).hash !== original.hash) throw Error('Destination changed during save');
-      await run('backup-copy',()=>fs.copyFile(target, backup, constants.COPYFILE_EXCL)); backed = true;
+      try {
+        await run('backup-copy',()=>fs.copyFile(target, backup, constants.COPYFILE_EXCL));
+      } catch (error) {
+        // libuv copyfile also copies the source mode (fchmod); NTFS mounts and GVfs
+        // shares refuse that, so fall back to a plain byte copy that never chmods.
+        // On Windows an EPERM that survived the whole retry budget is a real scanner
+        // lock, not a mount quirk, and must surface instead of being masked.
+        if (error?.retryExpired===true||!['EPERM','EACCES','ENOTSUP','EOPNOTSUPP','ENOSYS'].includes(error?.code)) throw error;
+        try {
+          await run('backup-copy-fallback',async()=>{
+            // Remove a partial backup only when the name is this save's own random one.
+            if (/^.+\.eo-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\.bak$/.test(backup))
+              await fs.unlink(backup).catch(unlinkError=>{if(unlinkError.code!=='ENOENT')throw unlinkError;});
+            const source=await fs.open(target,'r');
+            let destination;
+            try {
+              destination=await fs.open(backup,'wx');
+              await destination.writeFile(await source.readFile());
+              try { await destination.chmod((original?.mode || 0o600) & 0o777); } catch (chmodError) { if (!modeUnsupported(chmodError)) throw chmodError; }
+            } finally {
+              await source.close().catch(()=>{}); if(destination)await destination.close().catch(()=>{});
+            }
+          });
+          report('backup-copy-fallback',null,0,'success');
+        } catch { throw error; }
+      }
+      backed = true;
       // Windows FlushFileBuffers requires a write-capable handle.
       const copy = await run('backup-open',()=>fs.open(backup, process.platform==='win32'?'r+':'r')); try { await run('backup-sync',()=>copy.sync()); } finally { await run('backup-close',()=>copy.close()); }
       retained=await run('backup-fingerprint',()=>fingerprint(backup));

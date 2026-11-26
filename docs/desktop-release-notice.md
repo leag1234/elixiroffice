@@ -32,3 +32,11 @@ The private settings record stores only the enabled flag, attempt/reminder times
 Linux source UI evidence is separate from packaged acceptance. Real system-browser opening, macOS and Windows qualification remain unverified by these tests. No personal-machine test window is implied.
 
 Protocol references: [GitHub list releases](https://docs.github.com/en/rest/releases/releases#list-releases) and [SemVer 2.0.0](https://semver.org/spec/v2.0.0.html).
+
+## Release list size (#104)
+
+Clients up to 0.9.4 ask GitHub for `releases?per_page=20` and reject a response larger than 512 KiB; each published release adds about 30 KB (mostly asset metadata). From 0.9.3 the list exceeded the limit, so those clients silently stopped showing update notices. Since 0.9.5 the client asks for 5 releases and accepts 4 MiB.
+
+On 2026-11-24 the 21 GitHub releases v0.1.0-beta.1 to v0.6.6 were removed (git tags kept); their assets, notes and download counts (25,181 downloads) are archived with verified SHA-256 on the build server under `outside the repository`. The list of the 10 remaining releases was 287,447 bytes.
+
+Release checklist step: after publishing, measure `curl -s -H "Accept-Encoding: identity" "https://api.github.com/repos/leag1234/elixiroffice/releases?per_page=20" | wc -c`. If it is above 450,000 bytes while clients older than 0.9.5 are still in use, archive the oldest releases the same way.

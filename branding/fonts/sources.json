@@ -956,6 +956,41 @@
     }
    ],
    "group": "metric"
+  },
+  {
+   "family": "Calibri Light Metric",
+   "dir": "calibri-light-metric",
+   "replaces": "Calibri Light (the Light weight of the Office 2013-2022 headings font: Lato Light, a lighter sibling of the design Carlito is derived from, with every glyph advance set to the one of Calibri Light and vertical metrics of Calibri Light; Latin only, Regular, no italic)",
+   "license": "OFL-1.1",
+   "license_url": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/lato/OFL.txt",
+   "upstream": "https://github.com/googlefonts/lato-fonts",
+   "files": [
+    {
+     "name": "CalibriLightMetric-Regular.ttf",
+     "url": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/lato/Lato-Light.ttf",
+     "derive": {
+      "style": "Regular",
+      "vmetrics": "CalibriLight",
+      "keep_unicode": [
+       "0020-024F",
+       "02C6-02C7",
+       "02D8-02DD",
+       "2013-2026",
+       "2030",
+       "2039-203A",
+       "20AC",
+       "2122",
+       "2212"
+      ],
+      "layout_features": [
+       "ccmp",
+       "locl"
+      ]
+     },
+     "sha256": "cf2a774503baf418d584f49967bd160e1e03f087c13b25602f28024ec7788f08"
+    }
+   ],
+   "group": "metric"
   }
  ]
 }

@@ -124,6 +124,43 @@ class BuildTransforms(unittest.TestCase):
         self.assertEqual(g["hmtx"]["space"][0], 300, "no 'space' key: nothing changes")
 
 
+    def test_fit_advances_sets_target_advances_and_scales_outlines(self):
+        f = synthetic_font()  # upm 1000: a (adv 500, box 100..400 x 0..500), space 300
+        ref = {"upm": 2000, "yscale": 0.8, "adv": {"97": 800, "32": 400}}  # a: 400/1000 em, space: 200/1000 em
+        xs = build.fit_advances(f, ref)
+        f = roundtrip(f)
+        self.assertEqual(f["hmtx"]["a"][0], 400)
+        self.assertEqual(f["hmtx"]["space"][0], 200)
+        self.assertAlmostEqual(xs["a"], 0.8)
+        g = f["glyf"]["a"]
+        self.assertEqual((g.xMin, g.xMax, g.yMin, g.yMax), (80, 320, 0, 400), "x by 0.8, y by yscale 0.8")
+        self.assertEqual(f["hmtx"]["a"][1], 80, "lsb follows the scaled outline")
+        # a glyph with no reference advance (agrave has none here) takes the mean factor, composites are flattened
+        self.assertFalse(f["glyf"]["agrave"].isComposite())
+        self.assertNotIn("GPOS", f)
+
+    def test_calibri_light_metric_entry(self):
+        import json
+        here = os.path.dirname(os.path.abspath(__file__))
+        spec = json.load(open(os.path.join(here, "sources.json")))
+        fam = [x for x in spec["families"] if x["family"] == "Calibri Light Metric"][0]
+        self.assertEqual(fam["license"], "OFL-1.1")
+        d = fam["files"][0]["derive"]
+        self.assertEqual(d["vmetrics"], "CalibriLight")
+        r = json.load(open(os.path.join(here, "reference-metrics.json")))["CalibriLight"]
+        self.assertEqual(r["upm"], 2048)
+        self.assertEqual(r["adv"]["32"], 463)  # numbers only: advances of the Microsoft font, no font data
+        for cp in ("65", "97", "233", "8217", "8364"):
+            self.assertIn(cp, r["adv"])
+        self.assertTrue(0.85 < r["yscale"] < 1.0)
+        out = os.environ.get("CALIBRI_LIGHT_METRIC_BUILT")  # optional: path of a built CalibriLightMetric-Regular.ttf
+        if out and os.path.exists(out):
+            f = TTFont(out); cm = f.getBestCmap(); k = f["head"].unitsPerEm / r["upm"]
+            for cp, adv in r["adv"].items():
+                if int(cp) in cm:
+                    self.assertAlmostEqual(f["hmtx"][cm[int(cp)]][0], adv * k, delta=1)
+
+
 class SourcesPinning(unittest.TestCase):
     """sources.json: every file is pinned (https URL + SHA-256); Marelle is shipped unmodified by default."""
 

@@ -74,15 +74,22 @@ process.once('SIGINT',()=>cleanup().finally(()=>process.exit(130)));
    window.__eoStableState=window.__eoStableStep(e,window.__eoStableState);
    return window.__eoStableState.streak>=required;
   },{source:stableSource,required:require("./layout-stable.cjs").REQUIRED},{timeout:180000,polling:250});
-  const pdf=await env.page.evaluate(async()=>{
+  const scope=process.env.EO_FIDELITY_SHEET_SCOPE==='active'?'active':'workbook';
+  const pdf=await env.page.evaluate(async scope=>{
    const session=EOLocalSession,w=session.win;
    const load=url=>new Promise((ok,no)=>{const tag=w.document.createElement('script');tag.src=url;tag.onload=ok;tag.onerror=()=>no(Error('Local PDF script unavailable'));w.document.head.append(tag)});
    if(!w.EOClientPdf)await load('/example/local-assets/sdkjs/common/clientpdf/clientpdf.js');
    if(!w.EOWasmPdf)await load('/example/local-assets/sdkjs/common/clientpdf/wasm-pdf.js');
    if(!w.EODesktopPdf)await load('/example/local-assets/sdkjs/common/desktop/pdf.js');
-   const value=await w.EODesktopPdf(session.api,session.format);
+   // Spreadsheets: the app defaults to the active sheet; the Office reference prints the whole workbook, so ask for it explicitly.
+   const options={};
+   if(['xlsx','ods'].includes(session.format)&&scope!=='active'){
+    const adjust=new w.Asc.asc_CAdjustPrint();adjust.asc_setPrintType(w.Asc.c_oAscPrintType.EntireWorkbook);
+    options.advancedOptions=adjust;
+   }
+   const value=await w.EODesktopPdf(session.api,session.format,options);
    return{bytes:Array.from(value.bytes),stats:value.stats};
-  });
+  },scope);
   assert.equal(pdf.stats.backend,'wasm');assert(pdf.bytes.length>0);
   assert.deepEqual(env.errors,[]);
   const external=env.requests.filter(r=>!['eoapp:','blob:','data:'].some(prefix=>r.url.startsWith(prefix))||r.method!=='GET');

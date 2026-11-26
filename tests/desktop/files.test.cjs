@@ -60,6 +60,25 @@ test('a concurrent edit after copying the backup is preserved',async()=>{
  }finally{fs.copyFile=copy;await fs.rm(dir,{recursive:true,force:true})}
 });
 
+test('a refused backup copy falls back to a manual byte copy on mounts that reject chmod',async()=>{
+ const dir=await fs.mkdtemp(path.join(os.tmpdir(),'eo-desktop-copyfallback-')),copy=fs.copyFile;
+ const events=[];files.setDiagnostics(event=>events.push(event));
+ try{
+  const target=path.join(dir,'public.docx');await fs.writeFile(target,'PK original');
+  fs.copyFile=async(from,to,flags)=>{if(from===target)throw Object.assign(Error('Injected mount refusal'),{code:'ENOTSUP'});return copy(from,to,flags)};
+  const original=await files.read(target);
+  const saved=await files.atomic(target,Buffer.from('PK edited'),original);
+  assert.equal(await fs.readFile(target,'utf8'),'PK edited');
+  assert.equal(saved.hash,files.hash(Buffer.from('PK edited')));
+  assert.deepEqual(await fs.readdir(dir),['public.docx']);
+  assert(events.some(event=>event.step==='backup-copy-fallback'&&event.outcome==='success'),JSON.stringify(events));
+  assert(events.some(event=>event.step==='backup-copy'&&event.outcome==='failure'),JSON.stringify(events));
+  // A non-tolerated copy error still fails the save and keeps the original.
+  fs.copyFile=async(from,to,flags)=>{if(from===target)throw Object.assign(Error('Injected disk failure'),{code:'EIO'});return copy(from,to,flags)};
+  await assert.rejects(files.atomic(target,Buffer.from('PK stale'),saved),/Injected disk failure/);
+  assert.equal(await fs.readFile(target,'utf8'),'PK edited');
+ }finally{fs.copyFile=copy;files.setDiagnostics(null);await fs.rm(dir,{recursive:true,force:true})}
+});
 test('a linked destination folder is resolved once and saved through its canonical path',async()=>{
  const dir=await fs.mkdtemp(path.join(os.tmpdir(),'eo-desktop-folders-'));
  try{

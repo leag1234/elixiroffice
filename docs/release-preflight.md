@@ -107,3 +107,5 @@ If an image is missing, restore exact reviewed bytes and check the actual image
 ID, config and layer identity. A different ID requires a separate, reviewed
 equivalence decision and pin change. A tag alone is not proof, and a preflight
 must continue to refuse a missing or mismatched image.
+
+- Release list size: after publishing, run the size check in [release notices](desktop-release-notice.md#release-list-size-104); archive old releases if it is above 450,000 bytes.

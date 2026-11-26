@@ -185,7 +185,7 @@ Other screenshots: `fmt-after-style-live-preview.png` (preview on hover), `fmt-a
 - The templates `document-templates/new/<language>/new.docx` (used by the server, the sample application and the connectors) start like a blank Word document: theme font (Calibri) 11 pt, 8 pt after, line spacing 1.08; Office theme (Calibri Light / Calibri, Word 2013 to 2021 palette, accent 1 = 4472C4); built-in styles written explicitly (Heading 1 to 9 in Calibri Light in Word 2016 colors, Title, Subtitle, Quote, Intense Quote, emphasis and reference styles, List Paragraph, No Spacing, Table Grid). The language, page size, margins and right-to-left paragraph of each language are kept.
 - Generator: `tools/word-defaults/make_blank_docx.py document-templates/new`.
 - sdkjs: the built-in heading styles (those applied to a document that does not define them) use the theme's heading font (+Headings) instead of fixed Arial, like Word's latent styles.
-- Fonts: Calibri is not installed; it is rendered by **Carlito** (metrically compatible, OFL), already present in `core-fonts/crosextra` and already substituted by the engine. Nothing to embed. Carlito has no "Light" weight: Calibri Light displays as regular Carlito (titles a bit bolder than in Word).
+- Fonts: Calibri is not installed; it is rendered by **Carlito** (metrically compatible, OFL), already present in `core-fonts/crosextra` and already substituted by the engine. Nothing to embed. Calibri Light displays in Calibri Light Metric (Lato Light with the widths of Calibri Light, docs/fonts.md section 11).
 - The sample application embeds its templates in its binary: the check was done by opening the uploaded new `new.docx`. The new templates reach the image at the next full build.
 
 ### 2. Styles
@@ -242,7 +242,7 @@ Other screenshots: `fmt-after-style-live-preview.png` (preview on hover), `fmt-a
 - Paragraph box: no "Set As Default", "Mirror indents" nor "Collapsed by default"; preview drawn in HTML (approximate), not by the engine.
 - Paste: no "Paste Special…" nor "Set Default Paste…"; the "Picture" option only appears when the clipboard contains an image; the options after an external (HTML) paste remain sdkjs's.
 - Ctrl+Shift+S still opens "Save As" (in Word: Apply Styles); to be settled with the shortcuts slice.
-- Calibri Light rendered as regular Carlito (no free light weight installed).
+- Calibri Light rendered by Calibri Light Metric (Latin only; other scripts fall back to Carlito).
 
 ## Ribbon, second pass: contextual tabs and tab content
 

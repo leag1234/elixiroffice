@@ -184,7 +184,13 @@
     "linkConfirm": "Open this file with its default application?",
     "linkOpen": "Open",
     "aiPrivateHttp": "This connection is not encrypted. Use it only on a network you trust.",
-    "homeTab": "ElixirOffice start page"
+    "homeTab": "ElixirOffice start page",
+    "lockedMessage": "{file} is locked for editing by {user}.",
+    "lockedUnknownUser": "another user",
+    "lockOpenReadOnly": "Open read-only",
+    "lockEditAnyway": "Edit anyway",
+    "readOnlySuffix": "(Read-only)",
+    "readOnlySave": "This document is open read-only, so the original file was not changed. Use Save As to save a copy."
   },
   "fr": {
     "privacy": "Les documents restent sur cet ordinateur",
@@ -370,7 +376,13 @@
     "linkConfirm": "Ouvrir ce fichier avec son application par défaut ?",
     "linkOpen": "Ouvrir",
     "aiPrivateHttp": "Cette connexion n’est pas chiffrée. Ne l’utilisez que sur un réseau de confiance.",
-    "homeTab": "Page d'accueil ElixirOffice"
+    "homeTab": "Page d'accueil ElixirOffice",
+    "lockedMessage": "{file} est verrouillé pour modification par {user}.",
+    "lockedUnknownUser": "un autre utilisateur",
+    "lockOpenReadOnly": "Ouvrir en lecture seule",
+    "lockEditAnyway": "Modifier quand même",
+    "readOnlySuffix": "(Lecture seule)",
+    "readOnlySave": "Ce document est ouvert en lecture seule : le fichier d’origine n’a pas été modifié. Utilisez Enregistrer sous pour enregistrer une copie."
   },
   "de": {
     "privacy": "Dokumente bleiben auf diesem Computer",
@@ -552,7 +564,13 @@
     "linkConfirm": "Diese Datei mit der Standardanwendung öffnen?",
     "linkOpen": "Öffnen",
     "aiPrivateHttp": "Diese Verbindung ist nicht verschlüsselt. Verwenden Sie sie nur in einem vertrauenswürdigen Netzwerk.",
-    "homeTab": "ElixirOffice-Startseite"
+    "homeTab": "ElixirOffice-Startseite",
+    "lockedMessage": "{file} ist für die Bearbeitung durch {user} gesperrt.",
+    "lockedUnknownUser": "einen anderen Benutzer",
+    "lockOpenReadOnly": "Schreibgeschützt öffnen",
+    "lockEditAnyway": "Trotzdem bearbeiten",
+    "readOnlySuffix": "(Schreibgeschützt)",
+    "readOnlySave": "Dieses Dokument ist schreibgeschützt geöffnet, die Originaldatei wurde nicht geändert. Verwenden Sie „Speichern unter“, um eine Kopie zu speichern."
   },
   "es": {
     "privacy": "Los documentos permanecen en este equipo",
@@ -734,7 +752,13 @@
     "linkConfirm": "¿Abrir este archivo con su aplicación predeterminada?",
     "linkOpen": "Abrir",
     "aiPrivateHttp": "Esta conexión no está cifrada. Úsela solo en una red de confianza.",
-    "homeTab": "Página de inicio de ElixirOffice"
+    "homeTab": "Página de inicio de ElixirOffice",
+    "lockedMessage": "{file} está bloqueado para edición por {user}.",
+    "lockedUnknownUser": "otro usuario",
+    "lockOpenReadOnly": "Abrir como solo lectura",
+    "lockEditAnyway": "Editar de todos modos",
+    "readOnlySuffix": "(Solo lectura)",
+    "readOnlySave": "Este documento está abierto como solo lectura y el archivo original no se ha modificado. Use Guardar como para guardar una copia."
   },
   "it": {
     "privacy": "I documenti restano su questo computer",
@@ -916,7 +940,13 @@
     "linkConfirm": "Aprire questo file con l'applicazione predefinita?",
     "linkOpen": "Apri",
     "aiPrivateHttp": "Questa connessione non è cifrata. Usala solo su una rete di cui ti fidi.",
-    "homeTab": "Pagina iniziale di ElixirOffice"
+    "homeTab": "Pagina iniziale di ElixirOffice",
+    "lockedMessage": "{file} è bloccato per la modifica da {user}.",
+    "lockedUnknownUser": "un altro utente",
+    "lockOpenReadOnly": "Apri in sola lettura",
+    "lockEditAnyway": "Modifica comunque",
+    "readOnlySuffix": "(Sola lettura)",
+    "readOnlySave": "Questo documento è aperto in sola lettura e il file originale non è stato modificato. Usa Salva con nome per salvare una copia."
   },
   "pt": {
     "privacy": "Os documentos ficam neste computador",
@@ -1098,7 +1128,13 @@
     "linkConfirm": "Abrir este arquivo com o aplicativo padrão?",
     "linkOpen": "Abrir",
     "aiPrivateHttp": "Esta ligação não está cifrada. Utilize-a apenas numa rede de confiança.",
-    "homeTab": "Página inicial do ElixirOffice"
+    "homeTab": "Página inicial do ElixirOffice",
+    "lockedMessage": "{file} está bloqueado para edição por {user}.",
+    "lockedUnknownUser": "outro usuário",
+    "lockOpenReadOnly": "Abrir como somente leitura",
+    "lockEditAnyway": "Editar mesmo assim",
+    "readOnlySuffix": "(Somente leitura)",
+    "readOnlySave": "Este documento está aberto como somente leitura e o arquivo original não foi alterado. Use Salvar como para salvar uma cópia."
   },
   "pt-pt": {
     "privacy": "Os documentos ficam neste computador",
@@ -1280,7 +1316,13 @@
     "linkConfirm": "Abrir este ficheiro com a aplicação predefinida?",
     "linkOpen": "Abrir",
     "aiPrivateHttp": "Esta ligação não está cifrada. Utilize-a apenas numa rede de confiança.",
-    "homeTab": "Página inicial do ElixirOffice"
+    "homeTab": "Página inicial do ElixirOffice",
+    "lockedMessage": "{file} está bloqueado para edição por {user}.",
+    "lockedUnknownUser": "outro utilizador",
+    "lockOpenReadOnly": "Abrir só de leitura",
+    "lockEditAnyway": "Editar mesmo assim",
+    "readOnlySuffix": "(Só de leitura)",
+    "readOnlySave": "Este documento está aberto só de leitura e o ficheiro original não foi alterado. Utilize Guardar como para guardar uma cópia."
   },
   "nl": {
     "privacy": "Documenten blijven op deze computer",
@@ -1462,7 +1504,13 @@
     "linkConfirm": "Dit bestand openen met de standaardtoepassing?",
     "linkOpen": "Openen",
     "aiPrivateHttp": "Deze verbinding is niet versleuteld. Gebruik haar alleen op een netwerk dat u vertrouwt.",
-    "homeTab": "ElixirOffice-startpagina"
+    "homeTab": "ElixirOffice-startpagina",
+    "lockedMessage": "{file} is voor bewerking vergrendeld door {user}.",
+    "lockedUnknownUser": "een andere gebruiker",
+    "lockOpenReadOnly": "Alleen-lezen openen",
+    "lockEditAnyway": "Toch bewerken",
+    "readOnlySuffix": "(Alleen-lezen)",
+    "readOnlySave": "Dit document is alleen-lezen geopend en het originele bestand is niet gewijzigd. Gebruik Opslaan als om een kopie op te slaan."
   },
   "pl": {
     "privacy": "Dokumenty pozostają na tym komputerze",
@@ -1644,7 +1692,13 @@
     "linkConfirm": "Otworzyć ten plik w aplikacji domyślnej?",
     "linkOpen": "Otwórz",
     "aiPrivateHttp": "To połączenie nie jest szyfrowane. Używaj go tylko w zaufanej sieci.",
-    "homeTab": "Strona główna ElixirOffice"
+    "homeTab": "Strona główna ElixirOffice",
+    "lockedMessage": "Plik {file} jest zablokowany do edycji przez użytkownika {user}.",
+    "lockedUnknownUser": "innego użytkownika",
+    "lockOpenReadOnly": "Otwórz tylko do odczytu",
+    "lockEditAnyway": "Edytuj mimo to",
+    "readOnlySuffix": "(Tylko do odczytu)",
+    "readOnlySave": "Ten dokument jest otwarty tylko do odczytu, a oryginalny plik nie został zmieniony. Użyj opcji Zapisz jako, aby zapisać kopię."
   },
   "ru": {
     "privacy": "Документы остаются на этом компьютере",
@@ -1826,7 +1880,13 @@
     "linkConfirm": "Открыть этот файл в приложении по умолчанию?",
     "linkOpen": "Открыть",
     "aiPrivateHttp": "Это соединение не зашифровано. Используйте его только в сети, которой вы доверяете.",
-    "homeTab": "Стартовая страница ElixirOffice"
+    "homeTab": "Стартовая страница ElixirOffice",
+    "lockedMessage": "Файл {file} заблокирован для редактирования пользователем {user}.",
+    "lockedUnknownUser": "другим пользователем",
+    "lockOpenReadOnly": "Открыть только для чтения",
+    "lockEditAnyway": "Всё равно редактировать",
+    "readOnlySuffix": "(Только чтение)",
+    "readOnlySave": "Документ открыт только для чтения, исходный файл не изменён. Используйте «Сохранить как», чтобы сохранить копию."
   },
   "ja": {
     "privacy": "文書はこのコンピューターに保存されます",
@@ -2008,7 +2068,13 @@
     "linkConfirm": "このファイルを既定のアプリで開きますか?",
     "linkOpen": "開く",
     "aiPrivateHttp": "この接続は暗号化されていません。信頼できるネットワークでのみ使用してください。",
-    "homeTab": "ElixirOffice スタート ページ"
+    "homeTab": "ElixirOffice スタート ページ",
+    "lockedMessage": "{file} は {user} によって編集のためにロックされています。",
+    "lockedUnknownUser": "別のユーザー",
+    "lockOpenReadOnly": "読み取り専用で開く",
+    "lockEditAnyway": "それでも編集する",
+    "readOnlySuffix": "（読み取り専用）",
+    "readOnlySave": "この文書は読み取り専用で開かれているため、元のファイルは変更されていません。コピーを保存するには「名前を付けて保存」を使用してください。"
   },
   "zh": {
     "privacy": "文档保留在此计算机上",
@@ -2190,7 +2256,13 @@
     "linkConfirm": "要使用默认应用程序打开此文件吗?",
     "linkOpen": "打开",
     "aiPrivateHttp": "此连接未加密。请仅在您信任的网络中使用。",
-    "homeTab": "ElixirOffice 起始页"
+    "homeTab": "ElixirOffice 起始页",
+    "lockedMessage": "{user}正在编辑 {file}，该文件已被锁定。",
+    "lockedUnknownUser": "另一位用户",
+    "lockOpenReadOnly": "以只读方式打开",
+    "lockEditAnyway": "仍然编辑",
+    "readOnlySuffix": "（只读）",
+    "readOnlySave": "此文档以只读方式打开，原文件未被更改。请使用“另存为”保存副本。"
   },
   "zh-tw": {
     "privacy": "文件保留在此電腦上",
@@ -2375,7 +2447,13 @@
     "linkConfirm": "要使用預設應用程式開啟此檔案嗎?",
     "linkOpen": "開啟",
     "aiPrivateHttp": "此連線未加密。請僅在您信任的網路中使用。",
-    "homeTab": "ElixirOffice 起始頁"
+    "homeTab": "ElixirOffice 起始頁",
+    "lockedMessage": "{file} 已被 {user} 鎖定編輯。",
+    "lockedUnknownUser": "另一位使用者",
+    "lockOpenReadOnly": "以唯讀方式開啟",
+    "lockEditAnyway": "仍要編輯",
+    "readOnlySuffix": "（唯讀）",
+    "readOnlySave": "此文件以唯讀方式開啟，原始檔案未被變更。請使用「另存新檔」儲存副本。"
   },
   "ar": {
     "privacy": "تبقى المستندات على هذا الكمبيوتر",
@@ -2560,7 +2638,13 @@
     "linkConfirm": "هل تريد فتح هذا الملف باستخدام التطبيق الافتراضي؟",
     "linkOpen": "فتح",
     "aiPrivateHttp": "هذا الاتصال غير مشفّر. استخدمه فقط على شبكة تثق بها.",
-    "homeTab": "ElixirOffice start page"
+    "homeTab": "ElixirOffice start page",
+    "lockedMessage": "الملف {file} مقفل للتحرير بواسطة {user}.",
+    "lockedUnknownUser": "مستخدم آخر",
+    "lockOpenReadOnly": "فتح للقراءة فقط",
+    "lockEditAnyway": "التحرير على أي حال",
+    "readOnlySuffix": "(للقراءة فقط)",
+    "readOnlySave": "هذا المستند مفتوح للقراءة فقط ولم يتم تغيير الملف الأصلي. استخدم «حفظ باسم» لحفظ نسخة."
   },
   "az": {
     "privacy": "Sənədlər bu kompüterdə qalır",
@@ -2745,7 +2829,13 @@
     "linkConfirm": "Bu fayl defolt tətbiqlə açılsın?",
     "linkOpen": "Aç",
     "aiPrivateHttp": "Bu bağlantı şifrələnməyib. Ondan yalnız etibar etdiyiniz şəbəkədə istifadə edin.",
-    "homeTab": "ElixirOffice baş səhifəsi"
+    "homeTab": "ElixirOffice baş səhifəsi",
+    "lockedMessage": "{file} faylı {user} tərəfindən redaktə üçün kilidlənib.",
+    "lockedUnknownUser": "başqa istifadəçi",
+    "lockOpenReadOnly": "Yalnız oxumaq üçün aç",
+    "lockEditAnyway": "Yenə də redaktə et",
+    "readOnlySuffix": "(Yalnız oxumaq)",
+    "readOnlySave": "Bu sənəd yalnız oxumaq üçün açılıb, orijinal fayl dəyişdirilməyib. Surəti saxlamaq üçün “Fərqli saxla” istifadə edin."
   },
   "be": {
     "privacy": "Дакументы застаюцца на гэтым камп’ютары",
@@ -2930,7 +3020,13 @@
     "linkConfirm": "Адкрыць гэты файл у праграме па змаўчанні?",
     "linkOpen": "Адкрыць",
     "aiPrivateHttp": "Гэта злучэнне не зашыфравана. Выкарыстоўвайце яго толькі ў сетцы, якой вы давяраеце.",
-    "homeTab": "Стартавая старонка ElixirOffice"
+    "homeTab": "Стартавая старонка ElixirOffice",
+    "lockedMessage": "Файл {file} заблакіраваны для рэдагавання карыстальнікам {user}.",
+    "lockedUnknownUser": "іншым карыстальнікам",
+    "lockOpenReadOnly": "Адкрыць толькі для чытання",
+    "lockEditAnyway": "Усё роўна рэдагаваць",
+    "readOnlySuffix": "(Толькі чытанне)",
+    "readOnlySave": "Дакумент адкрыты толькі для чытання, зыходны файл не зменены. Выкарыстоўвайце «Захаваць як», каб захаваць копію."
   },
   "bg": {
     "privacy": "Документите остават на този компютър",
@@ -3118,7 +3214,13 @@
     "linkConfirm": "Да се отвори ли този файл с приложението по подразбиране?",
     "linkOpen": "Отвори",
     "aiPrivateHttp": "Тази връзка не е криптирана. Използвайте я само в мрежа, на която имате доверие.",
-    "homeTab": "Начална страница на ElixirOffice"
+    "homeTab": "Начална страница на ElixirOffice",
+    "lockedMessage": "{file} е заключен за редактиране от {user}.",
+    "lockedUnknownUser": "друг потребител",
+    "lockOpenReadOnly": "Отваряне само за четене",
+    "lockEditAnyway": "Редактиране въпреки това",
+    "readOnlySuffix": "(Само за четене)",
+    "readOnlySave": "Документът е отворен само за четене и оригиналният файл не е променен. Използвайте „Запиши като“, за да запишете копие."
   },
   "ca": {
     "privacy": "Els documents romanen en aquest ordinador",
@@ -3303,7 +3405,13 @@
     "linkConfirm": "Voleu obrir aquest fitxer amb l'aplicació predeterminada?",
     "linkOpen": "Obre",
     "aiPrivateHttp": "Aquesta connexió no està xifrada. Feu-la servir només en una xarxa de confiança.",
-    "homeTab": "Pàgina d'inici d'ElixirOffice"
+    "homeTab": "Pàgina d'inici d'ElixirOffice",
+    "lockedMessage": "{file} està bloquejat per a l’edició per {user}.",
+    "lockedUnknownUser": "un altre usuari",
+    "lockOpenReadOnly": "Obre en mode de només lectura",
+    "lockEditAnyway": "Edita igualment",
+    "readOnlySuffix": "(Només lectura)",
+    "readOnlySave": "Aquest document està obert en mode de només lectura i el fitxer original no s’ha modificat. Useu Desa com a per desar una còpia."
   },
   "cs": {
     "privacy": "Dokumenty zůstávají v tomto počítači",
@@ -3488,7 +3596,13 @@
     "linkConfirm": "Otevřít tento soubor ve výchozí aplikaci?",
     "linkOpen": "Otevřít",
     "aiPrivateHttp": "Toto spojení není šifrované. Používejte ho pouze v síti, které důvěřujete.",
-    "homeTab": "Úvodní stránka ElixirOffice"
+    "homeTab": "Úvodní stránka ElixirOffice",
+    "lockedMessage": "Soubor {file} je uzamčen pro úpravy uživatelem {user}.",
+    "lockedUnknownUser": "jiný uživatel",
+    "lockOpenReadOnly": "Otevřít jen pro čtení",
+    "lockEditAnyway": "Přesto upravit",
+    "readOnlySuffix": "(Jen pro čtení)",
+    "readOnlySave": "Tento dokument je otevřen jen pro čtení a původní soubor nebyl změněn. Kopii uložíte pomocí Uložit jako."
   },
   "da": {
     "privacy": "Dokumenter bliver på denne computer",
@@ -3673,7 +3787,13 @@
     "linkConfirm": "Vil du åbne denne fil med standardprogrammet?",
     "linkOpen": "Åbn",
     "aiPrivateHttp": "Denne forbindelse er ikke krypteret. Brug den kun på et netværk, du stoler på.",
-    "homeTab": "ElixirOffice-startside"
+    "homeTab": "ElixirOffice-startside",
+    "lockedMessage": "{file} er låst til redigering af {user}.",
+    "lockedUnknownUser": "en anden bruger",
+    "lockOpenReadOnly": "Åbn skrivebeskyttet",
+    "lockEditAnyway": "Rediger alligevel",
+    "readOnlySuffix": "(Skrivebeskyttet)",
+    "readOnlySave": "Dette dokument er åbnet skrivebeskyttet, og den oprindelige fil er ikke ændret. Brug Gem som for at gemme en kopi."
   },
   "el": {
     "privacy": "Τα έγγραφα παραμένουν σε αυτόν τον υπολογιστή",
@@ -3858,7 +3978,13 @@
     "linkConfirm": "Να ανοίξει αυτό το αρχείο με την προεπιλεγμένη εφαρμογή;",
     "linkOpen": "Άνοιγμα",
     "aiPrivateHttp": "Αυτή η σύνδεση δεν είναι κρυπτογραφημένη. Χρησιμοποιήστε την μόνο σε δίκτυο που εμπιστεύεστε.",
-    "homeTab": "Αρχική σελίδα ElixirOffice"
+    "homeTab": "Αρχική σελίδα ElixirOffice",
+    "lockedMessage": "Το {file} είναι κλειδωμένο για επεξεργασία από τον χρήστη {user}.",
+    "lockedUnknownUser": "άλλος χρήστης",
+    "lockOpenReadOnly": "Άνοιγμα μόνο για ανάγνωση",
+    "lockEditAnyway": "Επεξεργασία παρ’ όλα αυτά",
+    "readOnlySuffix": "(Μόνο για ανάγνωση)",
+    "readOnlySave": "Αυτό το έγγραφο είναι ανοιχτό μόνο για ανάγνωση και το αρχικό αρχείο δεν άλλαξε. Χρησιμοποιήστε το Αποθήκευση ως για να αποθηκεύσετε ένα αντίγραφο."
   },
   "eu": {
     "privacy": "Dokumentuak ordenagailu honetan geratzen dira",
@@ -4043,7 +4169,13 @@
     "linkConfirm": "Fitxategi hau aplikazio lehenetsiarekin ireki nahi duzu?",
     "linkOpen": "Ireki",
     "aiPrivateHttp": "Konexio hau ez dago zifratuta. Erabili soilik fidagarria den sare batean.",
-    "homeTab": "ElixirOffice hasierako orria"
+    "homeTab": "ElixirOffice hasierako orria",
+    "lockedMessage": "{file} fitxategia {user} erabiltzaileak editatzeko blokeatuta dago.",
+    "lockedUnknownUser": "beste erabiltzaile bat",
+    "lockOpenReadOnly": "Ireki irakurtzeko soilik",
+    "lockEditAnyway": "Editatu hala ere",
+    "readOnlySuffix": "(Irakurtzeko soilik)",
+    "readOnlySave": "Dokumentu hau irakurtzeko soilik irekita dago eta jatorrizko fitxategia ez da aldatu. Erabili Gorde honela kopia bat gordetzeko."
   },
   "fi": {
     "privacy": "Asiakirjat pysyvät tällä tietokoneella",
@@ -4230,7 +4362,13 @@
     "linkConfirm": "Avataanko tämä tiedosto oletussovelluksella?",
     "linkOpen": "Avaa",
     "aiPrivateHttp": "Tämä yhteys ei ole salattu. Käytä sitä vain verkossa, johon luotat.",
-    "homeTab": "ElixirOfficen aloitussivu"
+    "homeTab": "ElixirOfficen aloitussivu",
+    "lockedMessage": "{file} on käyttäjän {user} lukitsema muokkausta varten.",
+    "lockedUnknownUser": "toinen käyttäjä",
+    "lockOpenReadOnly": "Avaa vain luku -tilassa",
+    "lockEditAnyway": "Muokkaa silti",
+    "readOnlySuffix": "(Vain luku)",
+    "readOnlySave": "Tämä asiakirja on avattu vain luku -tilassa, eikä alkuperäistä tiedostoa muutettu. Tallenna kopio Tallenna nimellä -toiminnolla."
   },
   "gl": {
     "privacy": "Os documentos quedan neste ordenador",
@@ -4415,7 +4553,13 @@
     "linkConfirm": "Abrir este ficheiro coa aplicación predeterminada?",
     "linkOpen": "Abrir",
     "aiPrivateHttp": "Esta conexión non está cifrada. Úsaa só nunha rede de confianza.",
-    "homeTab": "Páxina de inicio de ElixirOffice"
+    "homeTab": "Páxina de inicio de ElixirOffice",
+    "lockedMessage": "{file} está bloqueado para edición por {user}.",
+    "lockedUnknownUser": "outro usuario",
+    "lockOpenReadOnly": "Abrir como só lectura",
+    "lockEditAnyway": "Editar igualmente",
+    "readOnlySuffix": "(Só lectura)",
+    "readOnlySave": "Este documento está aberto como só lectura e o ficheiro orixinal non se modificou. Use Gardar como para gardar unha copia."
   },
   "he": {
     "privacy": "המסמכים נשארים במחשב זה",
@@ -4600,7 +4744,13 @@
     "linkConfirm": "לפתוח את הקובץ הזה באמצעות יישום ברירת המחדל?",
     "linkOpen": "פתיחה",
     "aiPrivateHttp": "חיבור זה אינו מוצפן. השתמשו בו רק ברשת שאתם סומכים עליה.",
-    "homeTab": "דף ההתחלה של ElixirOffice"
+    "homeTab": "דף ההתחלה של ElixirOffice",
+    "lockedMessage": "הקובץ {file} נעול לעריכה על ידי {user}.",
+    "lockedUnknownUser": "משתמש אחר",
+    "lockOpenReadOnly": "פתח לקריאה בלבד",
+    "lockEditAnyway": "ערוך בכל זאת",
+    "readOnlySuffix": "(קריאה בלבד)",
+    "readOnlySave": "מסמך זה פתוח לקריאה בלבד וקובץ המקור לא שונה. השתמשו ב״שמירה בשם״ כדי לשמור עותק."
   },
   "hu": {
     "privacy": "A dokumentumok ezen a számítógépen maradnak",
@@ -4785,7 +4935,13 @@
     "linkConfirm": "Megnyitja ezt a fájlt az alapértelmezett alkalmazással?",
     "linkOpen": "Megnyitás",
     "aiPrivateHttp": "Ez a kapcsolat nem titkosított. Csak megbízható hálózaton használja.",
-    "homeTab": "ElixirOffice kezdőlap"
+    "homeTab": "ElixirOffice kezdőlap",
+    "lockedMessage": "A(z) {file} fájlt {user} zárolta szerkesztésre.",
+    "lockedUnknownUser": "másik felhasználó",
+    "lockOpenReadOnly": "Megnyitás csak olvasásra",
+    "lockEditAnyway": "Szerkesztés mégis",
+    "readOnlySuffix": "(Csak olvasható)",
+    "readOnlySave": "Ez a dokumentum csak olvasásra van megnyitva, az eredeti fájl nem módosult. A másolat mentéséhez használja a Mentés másként parancsot."
   },
   "hy": {
     "privacy": "Փաստաթղթերը մնում են այս համակարգչում",
@@ -4970,7 +5126,13 @@
     "linkConfirm": "Բացե՞լ այս ֆայլը լռելյայն հավելվածով։",
     "linkOpen": "Բացել",
     "aiPrivateHttp": "Այս կապը գաղտնագրված չէ։ Օգտագործեք այն միայն վստահելի ցանցում։",
-    "homeTab": "ElixirOffice partidas էջ"
+    "homeTab": "ElixirOffice partidas էջ",
+    "lockedMessage": "{file}-ը կողպված է խմբագրման համար՝ {user}-ի կողմից։",
+    "lockedUnknownUser": "մեկ այլ օգտվող",
+    "lockOpenReadOnly": "Բացել միայն կարդալու համար",
+    "lockEditAnyway": "Այնուամենայնիվ խմբագրել",
+    "readOnlySuffix": "(Միայն կարդալու համար)",
+    "readOnlySave": "Այս փաստաթուղթը բաց է միայն կարդալու համար, բնօրինակ ֆայլը չի փոփոխվել։ Պատճենը պահելու համար օգտագործեք «Պահել որպես»։"
   },
   "id": {
     "privacy": "Dokumen tetap berada di komputer ini",
@@ -5155,7 +5317,13 @@
     "linkConfirm": "Buka file ini dengan aplikasi default?",
     "linkOpen": "Buka",
     "aiPrivateHttp": "Koneksi ini tidak terenkripsi. Gunakan hanya di jaringan yang Anda percayai.",
-    "homeTab": "Halaman awal ElixirOffice"
+    "homeTab": "Halaman awal ElixirOffice",
+    "lockedMessage": "{file} dikunci untuk pengeditan oleh {user}.",
+    "lockedUnknownUser": "pengguna lain",
+    "lockOpenReadOnly": "Buka hanya-baca",
+    "lockEditAnyway": "Tetap edit",
+    "readOnlySuffix": "(Hanya-baca)",
+    "readOnlySave": "Dokumen ini dibuka sebagai hanya-baca sehingga berkas asli tidak diubah. Gunakan Simpan Sebagai untuk menyimpan salinan."
   },
   "ko": {
     "privacy": "문서는 이 컴퓨터에 보관됩니다",
@@ -5340,7 +5508,13 @@
     "linkConfirm": "기본 응용 프로그램으로 이 파일을 여시겠습니까?",
     "linkOpen": "열기",
     "aiPrivateHttp": "이 연결은 암호화되어 있지 않습니다. 신뢰할 수 있는 네트워크에서만 사용하세요.",
-    "homeTab": "ElixirOffice 시작 페이지"
+    "homeTab": "ElixirOffice 시작 페이지",
+    "lockedMessage": "{user} 사용자가 편집하기 위해 {file} 파일을 잠갔습니다.",
+    "lockedUnknownUser": "다른 사용자",
+    "lockOpenReadOnly": "읽기 전용으로 열기",
+    "lockEditAnyway": "그래도 편집",
+    "readOnlySuffix": "(읽기 전용)",
+    "readOnlySave": "이 문서는 읽기 전용으로 열려 있어 원본 파일이 변경되지 않았습니다. 다른 이름으로 저장을 사용하여 사본을 저장하세요."
   },
   "lo": {
     "privacy": "ເອກະສານຢູ່ໃນຄອມພິວເຕີນີ້",
@@ -5525,7 +5699,13 @@
     "linkConfirm": "ເປີດໄຟລ໌ນີ້ດ້ວຍແອັບພລິເຄຊັນເລີ່ມຕົ້ນບໍ?",
     "linkOpen": "ເປີດ",
     "aiPrivateHttp": "ການເຊື່ອມຕໍ່ນີ້ບໍ່ໄດ້ເຂົ້າລະຫັດ. ໃຊ້ສະເພາະໃນເຄືອຂ່າຍທີ່ທ່ານເຊື່ອຖືເທົ່ານັ້ນ.",
-    "homeTab": "ຫນ้าເລີ່ມต้น ElixirOffice"
+    "homeTab": "ຫນ้าເລີ່ມต้น ElixirOffice",
+    "lockedMessage": "{file} ຖືກລັອກເພື່ອແກ້ໄຂໂດຍ {user}.",
+    "lockedUnknownUser": "ຜູ້ໃຊ້ອື່ນ",
+    "lockOpenReadOnly": "ເປີດແບບອ່ານຢ່າງດຽວ",
+    "lockEditAnyway": "ແກ້ໄຂຕໍ່ໄປ",
+    "readOnlySuffix": "(ອ່ານຢ່າງດຽວ)",
+    "readOnlySave": "ເອກະສານນີ້ເປີດແບບອ່ານຢ່າງດຽວ ໄຟລ໌ຕົ້ນສະບັບບໍ່ໄດ້ຖືກປ່ຽນແປງ. ໃຊ້ບັນທຶກເປັນ ເພື່ອບັນທຶກສຳເນົາ."
   },
   "lv": {
     "privacy": "Dokumenti paliek šajā datorā",
@@ -5710,7 +5890,13 @@
     "linkConfirm": "Vai atvērt šo failu ar noklusējuma lietojumprogrammu?",
     "linkOpen": "Atvērt",
     "aiPrivateHttp": "Šis savienojums nav šifrēts. Izmantojiet to tikai tīklā, kuram uzticaties.",
-    "homeTab": "ElixirOffice sākumlapa"
+    "homeTab": "ElixirOffice sākumlapa",
+    "lockedMessage": "Failu {file} rediģēšanai ir bloķējis {user}.",
+    "lockedUnknownUser": "cits lietotājs",
+    "lockOpenReadOnly": "Atvērt tikai lasīšanai",
+    "lockEditAnyway": "Tomēr rediģēt",
+    "readOnlySuffix": "(Tikai lasāms)",
+    "readOnlySave": "Šis dokuments ir atvērts tikai lasīšanai, un oriģinālais fails nav mainīts. Lai saglabātu kopiju, izmantojiet Saglabāt kā."
   },
   "ms": {
     "privacy": "Dokumen kekal pada komputer ini",
@@ -5895,7 +6081,13 @@
     "linkConfirm": "Buka fail ini dengan aplikasi lalai?",
     "linkOpen": "Buka",
     "aiPrivateHttp": "Sambungan ini tidak disulitkan. Gunakannya hanya pada rangkaian yang anda percayai.",
-    "homeTab": "Halaman utama ElixirOffice"
+    "homeTab": "Halaman utama ElixirOffice",
+    "lockedMessage": "{file} dikunci untuk penyuntingan oleh {user}.",
+    "lockedUnknownUser": "pengguna lain",
+    "lockOpenReadOnly": "Buka baca sahaja",
+    "lockEditAnyway": "Sunting juga",
+    "readOnlySuffix": "(Baca sahaja)",
+    "readOnlySave": "Dokumen ini dibuka sebagai baca sahaja dan fail asal tidak diubah. Gunakan Simpan Sebagai untuk menyimpan salinan."
   },
   "no": {
     "privacy": "Dokumenter blir på denne datamaskinen",
@@ -6091,7 +6283,13 @@
     "linkConfirm": "Vil du åpne denne filen med standardprogrammet?",
     "linkOpen": "Åpne",
     "aiPrivateHttp": "Denne tilkoblingen er ikke kryptert. Bruk den bare på et nettverk du stoler på.",
-    "homeTab": "ElixirOffice-startside"
+    "homeTab": "ElixirOffice-startside",
+    "lockedMessage": "{file} er låst for redigering av {user}.",
+    "lockedUnknownUser": "en annen bruker",
+    "lockOpenReadOnly": "Åpne skrivebeskyttet",
+    "lockEditAnyway": "Rediger likevel",
+    "readOnlySuffix": "(Skrivebeskyttet)",
+    "readOnlySave": "Dette dokumentet er åpnet skrivebeskyttet, og den opprinnelige filen er ikke endret. Bruk Lagre som for å lagre en kopi."
   },
   "ro": {
     "privacy": "Documentele rămân pe acest computer",
@@ -6276,7 +6474,13 @@
     "linkConfirm": "Deschideți acest fișier cu aplicația implicită?",
     "linkOpen": "Deschide",
     "aiPrivateHttp": "Această conexiune nu este criptată. Folosiți-o doar într-o rețea de încredere.",
-    "homeTab": "Pagina de start ElixirOffice"
+    "homeTab": "Pagina de start ElixirOffice",
+    "lockedMessage": "{file} este blocat pentru editare de către {user}.",
+    "lockedUnknownUser": "alt utilizator",
+    "lockOpenReadOnly": "Deschide numai pentru citire",
+    "lockEditAnyway": "Editează oricum",
+    "readOnlySuffix": "(Numai citire)",
+    "readOnlySave": "Acest document este deschis numai pentru citire, iar fișierul original nu a fost modificat. Folosiți Salvare ca pentru a salva o copie."
   },
   "si": {
     "privacy": "ලේඛන මෙම පරිගණකයේ රැඳේ",
@@ -6461,7 +6665,13 @@
     "linkConfirm": "මෙම ගොනුව පෙරනිමි යෙදුම සමඟ විවෘත කරන්නද?",
     "linkOpen": "විවෘත කරන්න",
     "aiPrivateHttp": "මෙම සම්බන්ධතාව සංකේතනය කර නැත. ඔබ විශ්වාස කරන ජාලයක පමණක් භාවිතා කරන්න.",
-    "homeTab": "ElixirOffice start page"
+    "homeTab": "ElixirOffice start page",
+    "lockedMessage": "{file} {user} විසින් සංස්කරණය සඳහා අගුළු දමා ඇත.",
+    "lockedUnknownUser": "වෙනත් පරිශීලකයෙක්",
+    "lockOpenReadOnly": "කියවීමට පමණක් විවෘත කරන්න",
+    "lockEditAnyway": "කෙසේ වුවද සංස්කරණය කරන්න",
+    "readOnlySuffix": "(කියවීමට පමණි)",
+    "readOnlySave": "මෙම ලේඛනය කියවීමට පමණක් විවෘත කර ඇති අතර මුල් ගොනුව වෙනස් කර නැත. පිටපතක් සුරැකීමට “මෙලෙස සුරකින්න” භාවිත කරන්න."
   },
   "sk": {
     "privacy": "Dokumenty zostávajú v tomto počítači",
@@ -6646,7 +6856,13 @@
     "linkConfirm": "Otvoriť tento súbor v predvolenej aplikácii?",
     "linkOpen": "Otvoriť",
     "aiPrivateHttp": "Toto pripojenie nie je šifrované. Používajte ho iba v sieti, ktorej dôverujete.",
-    "homeTab": "Úvodná stránka ElixirOffice"
+    "homeTab": "Úvodná stránka ElixirOffice",
+    "lockedMessage": "Súbor {file} je zamknutý na úpravy používateľom {user}.",
+    "lockedUnknownUser": "iný používateľ",
+    "lockOpenReadOnly": "Otvoriť iba na čítanie",
+    "lockEditAnyway": "Napriek tomu upraviť",
+    "readOnlySuffix": "(Iba na čítanie)",
+    "readOnlySave": "Tento dokument je otvorený iba na čítanie a pôvodný súbor sa nezmenil. Kópiu uložíte pomocou Uložiť ako."
   },
   "sl": {
     "privacy": "Dokumenti ostanejo v tem računalniku",
@@ -6835,7 +7051,13 @@
     "linkConfirm": "Ali želite to datoteko odpreti s privzetim programom?",
     "linkOpen": "Odpri",
     "aiPrivateHttp": "Ta povezava ni šifrirana. Uporabljajte jo samo v omrežju, ki mu zaupate.",
-    "homeTab": "Začetna stran ElixirOffice"
+    "homeTab": "Začetna stran ElixirOffice",
+    "lockedMessage": "Datoteko {file} je za urejanje zaklenil uporabnik {user}.",
+    "lockedUnknownUser": "drug uporabnik",
+    "lockOpenReadOnly": "Odpri samo za branje",
+    "lockEditAnyway": "Vseeno uredi",
+    "readOnlySuffix": "(Samo za branje)",
+    "readOnlySave": "Ta dokument je odprt samo za branje in izvirna datoteka ni bila spremenjena. Kopijo shranite z ukazom Shrani kot."
   },
   "sq": {
     "privacy": "Dokumentet mbeten në këtë kompjuter",
@@ -7020,7 +7242,13 @@
     "linkConfirm": "Ta hapni këtë skedar me aplikacionin e parazgjedhur?",
     "linkOpen": "Hap",
     "aiPrivateHttp": "Ky lidhje nuk është e enkriptuar. Përdoreni vetëm në një rrjet që besoni.",
-    "homeTab": "Faqja kryesore e ElixirOffice"
+    "homeTab": "Faqja kryesore e ElixirOffice",
+    "lockedMessage": "{file} është i kyçur për redaktim nga {user}.",
+    "lockedUnknownUser": "një përdorues tjetër",
+    "lockOpenReadOnly": "Hap vetëm për lexim",
+    "lockEditAnyway": "Redakto gjithsesi",
+    "readOnlySuffix": "(Vetëm për lexim)",
+    "readOnlySave": "Ky dokument është hapur vetëm për lexim dhe skedari origjinal nuk u ndryshua. Përdorni Ruaj si për të ruajtur një kopje."
   },
   "sr": {
     "privacy": "Dokumenti ostaju na ovom računaru",
@@ -7205,7 +7433,13 @@
     "linkConfirm": "Otvoriti ovu datoteku podrazumevanom aplikacijom?",
     "linkOpen": "Otvori",
     "aiPrivateHttp": "Ova veza nije šifrovana. Koristite je samo na mreži kojoj verujete.",
-    "homeTab": "Početna stranica ElixirOffice"
+    "homeTab": "Početna stranica ElixirOffice",
+    "lockedMessage": "Datoteku {file} je zaključao za izmenu korisnik {user}.",
+    "lockedUnknownUser": "drugi korisnik",
+    "lockOpenReadOnly": "Otvori samo za čitanje",
+    "lockEditAnyway": "Ipak izmeni",
+    "readOnlySuffix": "(Samo za čitanje)",
+    "readOnlySave": "Ovaj dokument je otvoren samo za čitanje, a originalna datoteka nije izmenjena. Koristite Sačuvaj kao da biste sačuvali kopiju."
   },
   "sr-cyrl": {
     "privacy": "Документи остају на овом рачунару",
@@ -7390,7 +7624,13 @@
     "linkConfirm": "Отворити ову датотеку подразумеваном апликацијом?",
     "linkOpen": "Отвори",
     "aiPrivateHttp": "Ова веза није шифрована. Користите је само на мрежи којој верујете.",
-    "homeTab": "Почетна страница ElixirOffice"
+    "homeTab": "Почетна страница ElixirOffice",
+    "lockedMessage": "Датотеку {file} је закључао за измену корисник {user}.",
+    "lockedUnknownUser": "други корисник",
+    "lockOpenReadOnly": "Отвори само за читање",
+    "lockEditAnyway": "Ипак измени",
+    "readOnlySuffix": "(Само за читање)",
+    "readOnlySave": "Овај документ је отворен само за читање, а оригинална датотека није измењена. Користите Сачувај као да бисте сачували копију."
   },
   "sv": {
     "privacy": "Dokument stannar på den här datorn",
@@ -7575,7 +7815,13 @@
     "linkConfirm": "Vill du öppna den här filen med standardprogrammet?",
     "linkOpen": "Öppna",
     "aiPrivateHttp": "Den här anslutningen är inte krypterad. Använd den bara i ett nätverk du litar på.",
-    "homeTab": "ElixirOffice startsida"
+    "homeTab": "ElixirOffice startsida",
+    "lockedMessage": "{file} är låst för redigering av {user}.",
+    "lockedUnknownUser": "en annan användare",
+    "lockOpenReadOnly": "Öppna skrivskyddat",
+    "lockEditAnyway": "Redigera ändå",
+    "readOnlySuffix": "(Skrivskyddad)",
+    "readOnlySave": "Dokumentet är öppnat skrivskyddat och originalfilen har inte ändrats. Använd Spara som för att spara en kopia."
   },
   "tr": {
     "privacy": "Belgeler bu bilgisayarda kalır",
@@ -7760,7 +8006,13 @@
     "linkConfirm": "Bu dosya varsayılan uygulamayla açılsın mı?",
     "linkOpen": "Aç",
     "aiPrivateHttp": "Bu bağlantı şifrelenmemiştir. Yalnızca güvendiğiniz bir ağda kullanın.",
-    "homeTab": "ElixirOffice başlangıç sayfası"
+    "homeTab": "ElixirOffice başlangıç sayfası",
+    "lockedMessage": "{file} dosyası {user} tarafından düzenleme için kilitlenmiş.",
+    "lockedUnknownUser": "başka bir kullanıcı",
+    "lockOpenReadOnly": "Salt okunur aç",
+    "lockEditAnyway": "Yine de düzenle",
+    "readOnlySuffix": "(Salt okunur)",
+    "readOnlySave": "Bu belge salt okunur açıldı ve özgün dosya değiştirilmedi. Kopyayı kaydetmek için Farklı Kaydet’i kullanın."
   },
   "uk": {
     "privacy": "Документи залишаються на цьому комп’ютері",
@@ -7945,7 +8197,13 @@
     "linkConfirm": "Відкрити цей файл у програмі за замовчуванням?",
     "linkOpen": "Відкрити",
     "aiPrivateHttp": "Це з’єднання не зашифроване. Використовуйте його лише в мережі, якій ви довіряєте.",
-    "homeTab": "Стартова сторінка ElixirOffice"
+    "homeTab": "Стартова сторінка ElixirOffice",
+    "lockedMessage": "Файл {file} заблоковано для редагування користувачем {user}.",
+    "lockedUnknownUser": "іншим користувачем",
+    "lockOpenReadOnly": "Відкрити лише для читання",
+    "lockEditAnyway": "Усе одно редагувати",
+    "readOnlySuffix": "(Лише читання)",
+    "readOnlySave": "Документ відкрито лише для читання, початковий файл не змінено. Використайте «Зберегти як», щоб зберегти копію."
   },
   "ur": {
     "privacy": "دستاویزات اس کمپیوٹر پر رہتی ہیں",
@@ -8130,7 +8388,13 @@
     "linkConfirm": "کیا اس فائل کو ڈیفالٹ ایپلیکیشن سے کھولنا ہے؟",
     "linkOpen": "کھولیں",
     "aiPrivateHttp": "یہ کنکشن خفیہ نہیں ہے۔ اسے صرف ایسے نیٹ ورک پر استعمال کریں جس پر آپ بھروسا کرتے ہیں۔",
-    "homeTab": "ElixirOffice ہوم پیج"
+    "homeTab": "ElixirOffice ہوم پیج",
+    "lockedMessage": "{file} کو {user} نے ترمیم کے لیے مقفل کر رکھا ہے۔",
+    "lockedUnknownUser": "دوسرا صارف",
+    "lockOpenReadOnly": "صرف پڑھنے کے لیے کھولیں",
+    "lockEditAnyway": "پھر بھی ترمیم کریں",
+    "readOnlySuffix": "(صرف پڑھنے کے لیے)",
+    "readOnlySave": "یہ دستاویز صرف پڑھنے کے لیے کھلی ہے اور اصل فائل تبدیل نہیں ہوئی۔ نقل محفوظ کرنے کے لیے «اس طرح محفوظ کریں» استعمال کریں۔"
   },
   "vi": {
     "privacy": "Tài liệu ở lại trên máy tính này",
@@ -8320,6 +8584,12 @@
     "linkConfirm": "Mở tệp này bằng ứng dụng mặc định?",
     "linkOpen": "Mở",
     "aiPrivateHttp": "Kết nối này không được mã hóa. Chỉ sử dụng trên mạng mà bạn tin cậy.",
-    "homeTab": "Trang bắt đầu ElixirOffice"
+    "homeTab": "Trang bắt đầu ElixirOffice",
+    "lockedMessage": "{file} đang bị {user} khóa để chỉnh sửa.",
+    "lockedUnknownUser": "người dùng khác",
+    "lockOpenReadOnly": "Mở ở chế độ chỉ đọc",
+    "lockEditAnyway": "Vẫn chỉnh sửa",
+    "readOnlySuffix": "(Chỉ đọc)",
+    "readOnlySave": "Tài liệu này được mở ở chế độ chỉ đọc nên tệp gốc không bị thay đổi. Hãy dùng Lưu thành để lưu một bản sao."
   }
 }

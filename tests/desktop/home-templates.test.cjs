@@ -25,5 +25,5 @@ test('native Home content keeps document-language defaults separate from display
  assert(main.includes("require('./templates.cjs').resolve(selected,documentLanguage(),fontOptions)"));
  assert(home.includes('template.title||t(template.titleKey)'));
  assert(main.includes('defaultDocumentLanguage=locale.choose(preferred,languageInfo.supported)'));
- const renderer=fs.readFileSync(path.join(__dirname,'../../desktop/renderer.js'),'utf8');assert(renderer.includes("editorConfig:{mode:'edit',lang:info.language"));
+ const renderer=fs.readFileSync(path.join(__dirname,'../../desktop/renderer.js'),'utf8');assert(renderer.includes("editorConfig:{mode:file.readOnly?'view':'edit',lang:info.language"));
 });

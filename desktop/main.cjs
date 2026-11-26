@@ -76,7 +76,7 @@ let captureOptions,captureStartupError;
 let languageInfo,defaultDocumentLanguage;
 function documentLanguage(){return captureOptions?languageInfo.language:defaultDocumentLanguage;}
 const fatalFallback={fatalMessage:'ElixirOffice encountered an unexpected problem and needs to close.',fatalDetail:'Changes not yet saved may be lost. Open the app again to continue.',close:'Close'};
-const tabEnglish={...require('./tab-strings.json'),...require('./update-strings.cjs'),...require('./display-language-strings.cjs'),...require('./interface-size-strings.json'),exportTitle:'Export a copy',exportButton:'Export',exportNote:'The document stays open on its original file.',linkMissing:'The file does not exist or cannot be reached.',linkDenied:'A link cannot open programs, scripts or installers.',linkRelative:'This link is relative to the document: save the document first.',linkFailed:'The file could not be opened.',linkConfirm:'Open this file with its default application?',linkOpen:'Open',aiPrivateHttp:'This connection is not encrypted. Use it only on a network you trust.',cancel:'Cancel'};
+const tabEnglish={...require('./tab-strings.json'),...require('./update-strings.cjs'),...require('./display-language-strings.cjs'),...require('./lock-strings.cjs'),...require('./interface-size-strings.json'),exportTitle:'Export a copy',exportButton:'Export',exportNote:'The document stays open on its original file.',linkMissing:'The file does not exist or cannot be reached.',linkDenied:'A link cannot open programs, scripts or installers.',linkRelative:'This link is relative to the document: save the document first.',linkFailed:'The file could not be opened.',linkConfirm:'Open this file with its default application?',linkOpen:'Open',aiPrivateHttp:'This connection is not encrypted. Use it only on a network you trust.',cancel:'Cancel'};
 function localizedStrings(){
  const strings={...languageInfo?.strings};
  for(const [key,value] of Object.entries(tabEnglish))if(typeof strings[key]!=='string'||!strings[key].trim())strings[key]=value;
@@ -294,7 +294,25 @@ function enqueueFile(filename){
   return true;
  }).catch(refused);
 }
+// Lock files next to open documents (see file-locks.cjs). Never allowed to fail an open or save.
+const fileLocks=require('./file-locks.cjs'),lockHandles=new Map(),lockLog=code=>{void safety.log(code);};
+const lockMe=()=>({...fileLocks.identity(typeof settings?.author==='string'?settings.author:''),held:file=>[...lockHandles.values()].some(handle=>handle.held.some(item=>item.file===file))});
+async function lockFor(document,target,stale){
+ if(captureOptions)return;
+ try{
+  const previous=lockHandles.get(document.id);
+  if(previous&&previous.filename===target)return;
+  lockHandles.delete(document.id);await fileLocks.release(previous,lockLog);
+  if(!target)return;
+  const handle=await fileLocks.acquire(target,lockMe(),{stale,log:lockLog});
+  if(document.live===false){fileLocks.releaseSync(handle);return;}
+  lockHandles.set(document.id,handle);
+ }catch{lockLog('lock-failure');}
+}
+function releaseLocks(){for(const handle of lockHandles.values())fileLocks.releaseSync(handle);lockHandles.clear();}
+process.on('exit',releaseLocks);
 function releaseSession(document){
+ const lock=lockHandles.get(document.id);lockHandles.delete(document.id);void fileLocks.release(lock,lockLog).catch(()=>{});
  documentFiles.forget(document.id);
  for(const [id,entry] of recoveryRestores)if(entry.documentId===document.id)recoveryRestores.delete(id);
  for(const job of document.state.aiJobs.values())job.abort();document.state.aiJobs.clear();
@@ -408,14 +426,29 @@ async function openFile(filename,{reuse=true}={}){
   const after=await require('./document-files.cjs').identity(file.target,{platform:process.platform});
   if(!file.keys.every(key=>after.keys.includes(key)))throw Error('The file changed while opening. Choose it again.');
   validate();
+  // Another user or application may have the file open (Office ~$ file, LibreOffice lock): ask, or open read-only.
+  let readOnly=false,stale;
+  if(!captureOptions&&files.extension(file.target)!=='pdf'&&!tempLocation.isTemporaryPath(file.target)){
+   if(!await fileLocks.writable(file.target))readOnly=true;
+   else{
+    const found=await fileLocks.inspect(file.target,lockMe());validate();stale=found.stale;
+    if(found.locked){
+     const answer=await dialog.showMessageBox(documentWindow(),{type:'warning',title:'ElixirOffice',message:t('lockedMessage').replace('{file}',()=>path.basename(file.target)).replace('{user}',()=>found.user||t('lockedUnknownUser')),buttons:[t('lockOpenReadOnly'),t('lockEditAnyway'),t('cancel')],normalizeAccessKeys:true,defaultId:0,cancelId:2});
+     validate();
+     if(answer.response===2)throw Object.assign(Error('Open cancelled'),{code:'OPEN_CANCELLED'});
+     readOnly=answer.response===0;
+    }
+   }
+  }
   const document=reuse&&!source.state.current?source:await routedSession(source);
   try{
-   const selection=await registry.run(document,()=>select(file.target,opened));validate();
+   const selection=await registry.run(document,()=>select(file.target,opened,{readOnly}));validate();
+   if(!readOnly&&registry.run(document,()=>documentState().current?.target))await lockFor(document,file.target,stale);
    if(document!==source){document.state.initialSelection=selection;await loadSession(document);}
    return {documentId:document.id,selection};
   }catch(error){if(document!==source)removeFailedSession(document);throw error;}
  });
- }catch(error){if(error.code==='DOCUMENT_LIMIT')throw Object.assign(Error(t('tabLimit')),{code:error.code});if(error.code==='DOCUMENT_DESTINATION_OPEN')throw Error(t('tabDestinationBusy'));if(error?.code){await safety.log('file-error');await safety.log(error.code);throw Error(require('./errors.js').openMessage(error,languageInfo?.strings,process.platform));}throw error;}
+ }catch(error){if(error?.code==='OPEN_CANCELLED')return null;if(error.code==='DOCUMENT_LIMIT')throw Object.assign(Error(t('tabLimit')),{code:error.code});if(error.code==='DOCUMENT_DESTINATION_OPEN')throw Error(t('tabDestinationBusy'));if(error?.code){await safety.log('file-error');await safety.log(error.code);throw Error(require('./errors.js').openMessage(error,languageInfo?.strings,process.platform));}throw error;}
  validate();
  const document=registry.document(result.documentId),owner=registry.window(document.windowId);
  registry.activate(document.id);owner.window.show();owner.window.focus();
@@ -629,7 +662,7 @@ function title(){
  const document=registry.context(),owner=registry.window(document.windowId);
  tabHost.bounds(owner);
  registry.update(document.id,{name:documentState().current?.name||'',dirty:documentState().dirty});
- if(owner.activeId===document.id)owner.window.setTitle((documentState().dirty?'* ':'')+(documentState().current?.name?documentState().current.name+' — ':'')+'ElixirOffice');
+ if(owner.activeId===document.id)owner.window.setTitle((documentState().dirty?'* ':'')+(documentState().current?.name?documentState().current.name+(documentState().current.readOnly?' '+t('readOnlySuffix'):'')+' — ':'')+'ElixirOffice');
 }
 
 function finishClose(){
@@ -720,7 +753,7 @@ async function remember(target) {
   try{await persist();return true}
   catch(error){await safety.log('file-error');await safety.log(error?.code);return false}
 }
-async function select(filename,prepared) {
+async function select(filename,prepared,{readOnly=false}={}) {
   let opened;
   try{opened=prepared||await files.read(filename)}
   catch(error){
@@ -730,11 +763,11 @@ async function select(filename,prepared) {
   const {bytes,...metadata}=opened;
   const sourceExtension=files.extension(opened.target),sourceFormat=sourceExtension==='markdown'?'md':sourceExtension,format=require('./formats.cjs').canonical[sourceFormat]||sourceFormat;
   documentState().artifacts.clear();clearDestination();
-  documentState().current={...metadata,sourceTarget:opened.target,token:crypto.randomUUID(),name:path.basename(opened.target),format,sourceFormat,temporary:tempLocation.isTemporaryPath(opened.target)};
+  documentState().current={...metadata,sourceTarget:opened.target,token:crypto.randomUUID(),name:path.basename(opened.target),format,sourceFormat,temporary:tempLocation.isTemporaryPath(opened.target),readOnly:readOnly===true};
   documentState().current.protected=password.encrypted(bytes,sourceFormat);documentState().current.recoveryLocked=documentState().current.protected;
   if(format!==sourceFormat){documentState().current.target=null;documentState().current.name=path.basename(opened.target).replace(/\.[^.]+$/,'.'+format)}
   documentState().dirty=false;title();await remember(opened.target);
-  return {token:documentState().current.token,name:documentState().current.name,bytes:new Uint8Array(bytes),format:documentState().current.format,sourceFormat,temporary:documentState().current.temporary,runtime:conversionRuntime};
+  return {token:documentState().current.token,name:documentState().current.name,bytes:new Uint8Array(bytes),format:documentState().current.format,sourceFormat,temporary:documentState().current.temporary,readOnly:documentState().current.readOnly,runtime:conversionRuntime};
 }
 let homeFontDiscovery,homeFontGeneration;
 let openFontTimer;
@@ -863,7 +896,11 @@ async function start() {
   ses.webRequest.onBeforeRequest({urls:['http://*/*','https://*/*','ws://*/*','wss://*/*','ftp://*/*','file://*/*']},(_details,callback)=>callback({cancel:true}));
   ses.setPermissionCheckHandler(()=>false);
   ses.setPermissionRequestHandler((_wc,_permission,callback)=>callback(false));
-  ses.on('will-download',event=>event.preventDefault());
+  ses.on('will-download',(event,item)=>{
+   const options=require('./picture-download.cjs').decide({url:item.getURL(),filename:item.getFilename(),size:item.getTotalBytes(),origin:resources.ORIGIN,picturesDir:app.getPath('pictures')});
+   if(!options){event.preventDefault();return;}
+   item.setSaveDialogOptions(options);
+  });
   tabHost=require('./tabs-host.cjs').createTabHost({
    BrowserWindow,WebContentsView,ipcMain,registry,platform:process.platform,session:ses,root:__dirname,shellURL:resources.ORIGIN+'/tabs.html',
    geometry:{restore:restoreGeometry,changed:rememberGeometry},
@@ -960,6 +997,8 @@ async function start() {
     active(token);return {name:path.basename(result.filePaths[0]),fileType:format,data:new Uint8Array(selected.bytes)};
   }));
   handle('drop',filename=>operation(async()=>{if(captureOptions)throw Error('Capture mode uses generated documents only');if(typeof filename!=='string'||!filename)throw Error('Drop a file from this computer');return openFile(filename)}));
+  // After Save As from a read-only document the copy becomes a normal editable document.
+  handle('reopen-saved',token=>operation(async()=>{active(token);const target=documentState().current.target;if(!target||documentState().current.readOnly)throw Error('No saved copy to reopen');return select(target);}));
   handle('saved-open',(id)=>operation(async()=>{
     if(captureOptions)throw Error('Capture mode unavailable');
     const target=await savedTarget(id);
@@ -983,13 +1022,14 @@ async function start() {
   handle('state',(token,modified)=>{if(!documentState().current||token!==documentState().current.token)return false;documentState().dirty=modified===true;title();return true});
   handle('rename',(token,name)=>operation(async()=>{
     active(token);if(captureOptions)throw Error('Rename is unavailable in capture mode');
+    if(documentState().current.readOnly)throw Error(t('readOnlySave'));
     if(documentState().current.target){
       const previous=documentState().current.target;
       const target=path.join(path.dirname(previous),files.renameName(name,path.extname(previous)));
       const {bytes,...renamed}=await withDestination(target,{adopt:true},()=>files.rename(documentState().current,name));
       documentState().current={...documentState().current,...renamed,sourceTarget:renamed.target};
       settings.recents=settings.recents.filter(item=>item.target!==previous);
-      await remember(documentState().current.target);
+      await remember(documentState().current.target);await lockFor(registry.context(),documentState().current.target);
     }else documentState().current.name=files.renameName(name,'.'+documentState().current.format);
     documentState().current.recoveryVersion=(documentState().current.recoveryVersion||0)+1;title();
     return {name:documentState().current.name,recoveryVersion:documentState().current.recoveryVersion};
@@ -1030,15 +1070,18 @@ async function start() {
         if(destination.dev===original.dev&&destination.ino===original.ino)throw Error('Save the copy to a different file. Your original file was not changed.');
       }catch(error){if(error.code!=='ENOENT')throw error}
     }
+    if(documentState().current.readOnly&&await fileLocks.isOriginal(documentState().current,target))throw Error(t('readOnlySave'));
+    const wasReadOnly=documentState().current.readOnly===true;
     operationStage(token,operationId,'writing');
     const saved=await withDestination(target,{adopt:true},()=>password.write(files,target,bytes,selected&&!copy?selected.state||{absent:true}:!as&&!copy&&documentState().current.target?documentState().current:undefined,writeOptions));
-    documentState().current={...documentState().current,...saved,sourceTarget:target,sourceFormat:documentState().current.format,protected:password.encrypted(bytes,documentState().current.format),name:path.basename(target),temporary:false,embeddedObjects:['odt','ods','odp'].includes(documentState().current.format)?packageGuard.embeddedObjects(bytes):0};const preferencesSaved=await remember(target);title();
+    documentState().current={...documentState().current,...saved,sourceTarget:target,sourceFormat:documentState().current.format,readOnly:false,protected:password.encrypted(bytes,documentState().current.format),name:path.basename(target),temporary:false,embeddedObjects:['odt','ods','odp'].includes(documentState().current.format)?packageGuard.embeddedObjects(bytes):0};const preferencesSaved=await remember(target);title();await lockFor(registry.context(),documentState().current.target||target);
     documentState().current.recoveryVersion=(documentState().current.recoveryVersion||0)+1;
-    return {artifactId:documentState().artifacts.register(saved,documentState().current.token),name:documentState().current.name,bytes:saved.bytes,recoveryVersion:documentState().current.recoveryVersion,preferencesSaved,durabilityUnconfirmed:saved.durabilityUnconfirmed===true,backupName:saved.backupName||null};
+    return {reopen:wasReadOnly,artifactId:documentState().artifacts.register(saved,documentState().current.token),name:documentState().current.name,bytes:saved.bytes,recoveryVersion:documentState().current.recoveryVersion,preferencesSaved,durabilityUnconfirmed:saved.durabilityUnconfirmed===true,backupName:saved.backupName||null};
   })));
   handle('save-source',(token,input,operationId)=>operation(()=>files.scoped({scope:token,id:operationId},async writeOptions=>{
     active(token);const current=documentState().current;
     if(current.sourceFormat!=='md'||current.format!=='docx')throw Error('Only Markdown originals use source save');
+    if(current.readOnly)throw Error(t('readOnlySave'));
     const bytes=output(input,'md'),target=current.sourceTarget;
     if(!target)throw Error('The Markdown original is no longer selected');
     if(!current.markdownWarningShown){
@@ -1350,4 +1393,4 @@ app.on('browser-window-created',(_event,window)=>{window.on('query-session-end',
 app.on('render-process-gone',(_event,_contents,details)=>{if(details?.reason==='clean-exit')return;updateExitSafe=false;void updateController?.cancel();});
 app.on('activate',()=>{if(tabHost&&!registry.windows().length){const owner=tabHost.createWindow();win=owner.window;owner.ready.then(()=>loadSession(createSession(owner.id))).catch(()=>safety.log('startup-failure'));}});
 
-app.on('will-quit',()=>{updateController?.dispose();releaseNotice?.dispose();});
+app.on('will-quit',()=>{releaseLocks();updateController?.dispose();releaseNotice?.dispose();});

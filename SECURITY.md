@@ -57,6 +57,24 @@ Excel references) before it is integrated.
 
 ## Security check before each release
 
+### 2026-11-26 (release 0.9.5)
+
+- Release with the fixes and changes listed in the changelog since 0.9.4 (DocumentServer pins: sdkjs, web-apps and the
+  server example app; core unchanged, same conversion runtime as 0.9.4).
+- Dependency scan (OSV, nightly) of 2026-11-26: 1087 findings, none new since 2026-11-25 and none gone. The shipped
+  high finding (request-filtering-agent 1.0.5 in the server) stays reviewed as not affected. The vendored C/C++ check of
+  2026-11-26 is unchanged (xpdf 4.03, dcraw 8.93, V8 8.9, ICU 74.2, HarfBuzz stay on the plan).
+- Container image scan (Trivy, nightly) of 2026-11-26 on the server image: 0 critical, 0 high, 192 medium, 47 low;
+  unchanged in count since the previous nightly and all reviewed as not affecting the shipped configuration.
+- Electron 44.11.5 -> 44.11.6 (Chromium 152.0.7977.169 unchanged, embedded Node.js 24.22.3 unchanged). 44.11.6 adds
+  backported security fixes from upstream Chromium, V8, Skia, PDFium, ANGLE, Dawn, FFmpeg and WebRTC. The release
+  notes list no CVE identifiers. The signed update policy and the QA baseline were re-qualified for 44.11.6 in the
+  same change.
+- npm audit of desktop/package-lock.json: production dependencies 0 findings; the full tree has the same 8 findings as
+  for 0.9.4 (1 high, 7 moderate), all in build tools (undici, minimatch, fast-uri, electron-builder and helpers); they
+  run on the build machine only and are not part of the packaged application.
+- New code in this release: see the changelog; no new network access.
+
 ### 2026-11-23 (release 0.9.4)
 
 - Release with the fixes and changes listed in the changelog since 0.9.3 (DocumentServer pins: sdkjs, web-apps and the

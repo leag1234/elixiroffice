@@ -44,8 +44,8 @@ function mockHTTP({status=200,headers={},body='[]',stall=false}={}){
 test('anonymous fixed API request contains no document/user settings or asset URL',async()=>{
  const mock=mockHTTP({body:JSON.stringify([release('v0.4.0')])});
  assert.equal((await fetchReleases({request:mock.request}))[0].tag_name,'v0.4.0');
- assert.equal(mock.calls.length,1);assert.equal(mock.calls[0].target,'https://api.github.com/repos/leag1234/elixiroffice/releases?per_page=20');
- assert.equal(API_URL,mock.calls[0].target);assert.equal(DAY,86400000);assert.equal(MAX_BYTES,524288);assert.equal(TIMEOUT_MS,8000);
+ assert.equal(mock.calls.length,1);assert.equal(mock.calls[0].target,'https://api.github.com/repos/leag1234/elixiroffice/releases?per_page=5');
+ assert.equal(API_URL,mock.calls[0].target);assert.equal(DAY,86400000);assert.equal(MAX_BYTES,4194304);assert.equal(TIMEOUT_MS,8000);
  const options=mock.calls[0].options;
  assert.equal(options.method,'GET');assert.equal(options.agent,false);
  assert.equal(options.headers['Accept-Encoding'],'identity');

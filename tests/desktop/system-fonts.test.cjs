@@ -115,7 +115,7 @@ test('revocation during private discovery rejects the pending index and leaves n
   const pending=fonts.index();fonts.clear();await assert.rejects(pending,/stopped|changed/);assert.equal(fonts.files.size,0);
  }finally{await fs.rm(temp,{recursive:true,force:true});}
 });
-test('actual bundled metadata preserves all54 shared families and128 faces plus the exact desktop fallbacks',async()=>{
+test('actual bundled metadata preserves all55 shared families and129 faces plus the exact desktop fallbacks',async()=>{
  const fonts=new Fonts();fonts.allowed=[];fonts.configure({bundled:assets,bundleIdentity:'actual-pack'});
  try{
   const index=await fonts.index(),profile=require('./fixtures/shared-font-profile.json'),sha=bytes=>require('node:crypto').createHash('sha256').update(bytes).digest('hex');
@@ -123,9 +123,9 @@ test('actual bundled metadata preserves all54 shared families and128 faces plus 
   for(const [family,variants] of Object.entries(profile.variants))for(const [style,[file,faceIndex]] of Object.entries(variants)){
    if(file>=0)expected.set(family+'|'+styles[style]+'|'+faceIndex,profile.files[String(file).padStart(3,'0')]);
   }
-  assert.equal(expected.size,128);assert.equal(Object.keys(profile.faces).length,54);
+  assert.equal(expected.size,129);assert.equal(Object.keys(profile.faces).length,55);
   const shared=index.bundled.filter(f=>Object.hasOwn(profile.faces,f.family)),extra=index.bundled.filter(f=>!Object.hasOwn(profile.faces,f.family));
-  assert.equal(new Set(shared.map(f=>f.family)).size,54);assert.equal(shared.length,128);
+  assert.equal(new Set(shared.map(f=>f.family)).size,55);assert.equal(shared.length,129);
   for(const f of shared){
    const key=f.family+'|'+f.styleCode+'|'+f.faceIndex;assert(expected.has(key),key);
    assert.equal(sha(await fs.readFile(path.join(assets,'fonts',f.file))),expected.get(key),key);
@@ -146,7 +146,7 @@ test('actual bundled metadata preserves all54 shared families and128 faces plus 
      assert.equal(f.faceIndex,0);assert.equal(sha(raw),spec.outputs.find(item=>item.style===style).sha256);
     }
    }
-   assert.equal(seen.size,28);assert.equal(new Set(index.bundled.map(f=>f.family)).size,68);assert.equal(index.bundled.length,156);
+   assert.equal(seen.size,28);assert.equal(new Set(index.bundled.map(f=>f.family)).size,69);assert.equal(index.bundled.length,157);
   }
   const info=shared.find(f=>f.family==='Carlito'&&f.styleCode===0);assert(info);assert(resolver.covers(info,[65]));assert.equal(info.faceIndex,0);assert(!resolver.covers(info,[0x3042]));
   for(const family of ['Elixir Fallback CJK JP','Elixir Fallback CJK SC','Elixir Fallback CJK TC','Elixir Fallback CJK KR']){

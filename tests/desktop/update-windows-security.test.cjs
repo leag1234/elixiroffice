@@ -32,3 +32,11 @@ test('NSIS registration checks only the pinned product GUID and exact install/un
  assert.equal(UUID.v5(pkg.build.appId,UUID.parse('50e065bc-3134-11e6-9bab-38c9862bdaf3')),'5fa5daf2-a61b-5cb4-8b40-2391c8734adc');
  assert(!pkg.build.nsis.guid,'A configured NSIS GUID requires explicit eligibility migration');
 });
+test('NSIS DisplayName accepts the electron-builder product-plus-version form (issue 74)',async()=>{
+ let source='';const s=createWindowsSecurity({platform:'win32',systemRoot:'C:\\Windows',execFileSync(exe,args){source=Buffer.from(args[3],'base64').toString('utf16le');return 'OK';}});
+ await s.installed('C:\\Users\\Synthetic\\ElixirOffice');
+ assert(!source.includes("'DisplayName') -ceq"),'exact DisplayName match rejects every default installation');
+ const m=/-cmatch '([^']+)'/.exec(source);assert(m,'DisplayName regex present');const re=new RegExp(m[1]);
+ for(const ok of ['ElixirOffice','ElixirOffice 0.9.5','ElixirOffice 0.9.3-rc.90'])assert(re.test(ok),ok);
+ for(const bad of ['elixiroffice 0.9.5','ElixirOffice Evil','OtherApp 0.9.5','ElixirOffice 1.0 x','ElixirOffice  1'])assert(!re.test(bad),bad);
+});

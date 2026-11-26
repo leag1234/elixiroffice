@@ -205,7 +205,7 @@ async function open(selected) {
     const authorName=await eoDesktop.author();
     await new Promise((resolve,reject)=>{
       editor=new DocsAPI.DocEditor('editor',{documentType:kind,type:'desktop',width:'100%',height:'100%',
-        editorConfig:{mode:'edit',lang:info.language,user:{id:'local',name:authorName},customization:{elixirLocal:true,autosave:false,forcesave:false,plugins:false,macros:false,features:{featuresTips:false}},coEditing:{mode:'strict',change:false}},
+        editorConfig:{mode:file.readOnly?'view':'edit',lang:info.language,user:{id:'local',name:authorName},customization:{elixirLocal:true,autosave:false,forcesave:false,plugins:false,macros:false,features:{featuresTips:false}},coEditing:{mode:'strict',change:false}},
         // #94: api.js derives canRename from onRequestRename; the title bar renames through desktopAction instead.
         events:{...(!info.capture&&!file.temporary?{onRequestRename:()=>{}}:{}),onAppReady:async()=>{
           if(controller)return;
@@ -231,7 +231,7 @@ async function open(selected) {
             const fontsAt=performance.now();await installFonts(frame);openPerformance('font-install',performance.now()-fontsAt);
             main=(kind==='word'?frame.DE:kind==='cell'?frame.SSE:kind==='pdf'?frame.PDFE:frame.PE).getController('Main');
             frame.Common.ElixirLocal.prepare(main.api,main,{mailMerge:true});
-            main.loadDocument({doc:{fileType:format,title:file.name,url:'_offline_',key:'local-'+crypto.randomUUID(),permissions:{edit:kind!=='pdf',comment:true,fillForms:true,download:true,print:kind!=='pdf',chat:false}}});
+            main.loadDocument({doc:{fileType:format,title:file.name,url:'_offline_',key:'local-'+crypto.randomUUID(),permissions:{edit:kind!=='pdf'&&!file.readOnly,comment:true,fillForms:true,download:true,print:kind!=='pdf',chat:false}}});
             controller=frame.Common.ElixirLocal.install(main.api,{format,name:file.name,lang:info.language,pdfStrings:info.strings,saveAcknowledgesOriginal:kind==='pdf',operationScope:file.token,onOperation:operationEvent,beforeOperationWork:()=>EOOperationFeedback.paint(window),onExport:exportOutput,buildPdf:buildLocalPdf,chooseMailMergeRecipients:chooseMailMergeRecipients,getSignal:()=>abort.signal,
               onSave:async (bytes,protection)=>{
                 if(file.sourceFormat==='md'&&!savingAs){
@@ -239,7 +239,7 @@ async function open(selected) {
                   const saved=await nativeWrite(()=>eoDesktop.saveSource(file.token,markdown,lastOperation?.id),file.token,lastOperation?.id);
                   file.name=saved.name;setDocumentName(saved.name);file.recoveryVersion=saved.recoveryVersion;window.EOLastSave=saved;return outputOutcome(saved);
                 }
-                const saved=await nativeWrite(()=>eoDesktop.save(file.token,bytes,savingAs,protection,lastOperation?.id,saveAsTicket),file.token,lastOperation?.id);file.name=saved.name;setDocumentName(saved.name);file.recoveryVersion=saved.recoveryVersion;window.EOLastSave=saved;return outputOutcome(saved)},
+                const saved=await nativeWrite(()=>eoDesktop.save(file.token,bytes,savingAs,protection,lastOperation?.id,saveAsTicket),file.token,lastOperation?.id);file.name=saved.name;setDocumentName(saved.name);file.recoveryVersion=saved.recoveryVersion;window.EOLastSave=saved;if(saved.reopen)setTimeout(function again(){if(opening||operationBusy)return void setTimeout(again,200);run(()=>eoDesktop.reopenSaved(file.token))},200);return outputOutcome(saved)},
               onProtectionLock:async()=>{const locked=await eoDesktop.passwordLock(file.token);file.recoveryVersion=locked.recoveryVersion;status('AutoRecover is disabled for this session because password protection was used');},
               onBeforeSave:()=>{abort=new AbortController();buttons(true)},onAfterSave:()=>{buttons(false);updateDirty()},
               onError:fail});
@@ -268,7 +268,7 @@ async function open(selected) {
             frame.requestAnimationFrame(()=>frame.requestAnimationFrame(()=>openPerformance('first-paint',performance.now()-timings.contentReady)));
             // Report readiness only after the native file actions have been installed.
             window.EOLocalSession={controller,format,stats,api:main.api,file,win:frame,timings,editableMs:performance.now()};
-            status(kind==='pdf'&&!controller.canSave()?controller.readOnlyMessage():'');
+            status(kind==='pdf'&&!controller.canSave()?controller.readOnlyMessage():file.readOnly?t('readOnlySave'):'');
             if(file.temporary){
               status(t('temporaryLocation'));
               const saveAsButton=document.createElement('button');

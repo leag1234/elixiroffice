@@ -9,8 +9,8 @@ function load(root,seal,app=require('electron').app){
  const run=m.endpoint.prefix.split('/')[2],profile=path.join(app.getPath('appData'),PRODUCT,run);
  app.setName(PRODUCT);app.setAppUserModelId?.(APP_ID);app.setPath('userData',profile);
  const {createPolicy}=require(path.join(root,'update-policy.cjs'));
- const policy=createPolicy({trustedKeys:[m.trust],qualifiedElectronVersion:'44.11.5',
-  qualification:{reviewed:true,electronVersion:'44.11.5',platforms:{nsis:m.platform==='win32',AppImage:m.platform==='linux'}}});
+ const policy=createPolicy({trustedKeys:[m.trust],qualifiedElectronVersion:'44.11.6',
+  qualification:{reviewed:true,electronVersion:'44.11.6',platforms:{nsis:m.platform==='win32',AppImage:m.platform==='linux'}}});
  return Object.freeze({
   policy,
   createNotice(options){

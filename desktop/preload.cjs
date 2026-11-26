@@ -62,6 +62,7 @@ contextBridge.exposeInMainWorld('eoDesktop', Object.freeze({
   cancelWrite: (token, operationId) => ipcRenderer.invoke('eo:write-cancel', token, operationId),
   save: (token, bytes, as, protection, operationId, ticket) => ipcRenderer.invoke('eo:save', token, bytes, !!as, protection, operationId, ticket),
   saveSource: (token, bytes, operationId) => ipcRenderer.invoke('eo:save-source', token, bytes, operationId),
+  reopenSaved: token => ipcRenderer.invoke('eo:reopen-saved', token),
   savedOpen: id => ipcRenderer.invoke('eo:saved-open', id),
   savedShow: id => ipcRenderer.invoke('eo:saved-show', id),
   exportFormats: token => ipcRenderer.invoke('eo:export-formats', token),

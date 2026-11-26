@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 'use strict';
 const fs=require('node:fs/promises'),{constants}=require('node:fs'),path=require('node:path');
-const steps=new Set(['parent-check','target-stat','target-fingerprint','temporary-open','temporary-write','temporary-mode','temporary-sync','temporary-stat','temporary-close','backup-copy','backup-open','backup-sync','backup-close','backup-fingerprint','replace','rename','target-stamp','backup-stamp','output-fingerprint','backup-cleanup','cleanup-target-check','cleanup-backup-check','failed-save-cleanup','fallback-stat','fallback-open','fallback-read','fallback-write','fallback-truncate','fallback-sync','fallback-close','save']);
+const steps=new Set(['parent-check','target-stat','target-fingerprint','temporary-open','temporary-write','temporary-mode','temporary-sync','temporary-stat','temporary-close','backup-copy','backup-copy-fallback','backup-open','backup-sync','backup-close','backup-fingerprint','replace','rename','target-stamp','backup-stamp','output-fingerprint','backup-cleanup','cleanup-target-check','cleanup-backup-check','failed-save-cleanup','fallback-stat','fallback-open','fallback-read','fallback-write','fallback-truncate','fallback-sync','fallback-close','save']);
 const codes=new Set(['EPERM','EACCES','EBUSY','EIO','ENOSPC','ENOENT','EEXIST','EROFS','ENAMETOOLONG','EMFILE','ENFILE','ENOTSUP','UNKNOWN','cancelled']);
 const version=value=>typeof value==='string'&&/^[0-9][0-9a-zA-Z.+-]{0,63}$/.test(value)?value:'unknown';
 module.exports.create=function create(root,info={}){
